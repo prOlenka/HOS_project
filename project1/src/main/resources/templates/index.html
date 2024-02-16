@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <title>Как ты и просила</title>
+</head>
+<body>
+  <div>
+    <p th:text = "${user}" />
+        <input type="button" class="bigger" value="Да, Дима, спасибо большое">
+        <button id="move" onmouseover="runaway(this)">Нет</button>
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>
