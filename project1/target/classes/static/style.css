@@ -1,6 +1,7 @@
 body{
   background: #a2efea;
-.test_buttons{
+}
+div{
   width: 300px;
   height: 100px;
   position: absolute;
@@ -28,5 +29,5 @@ input{
 input.bigger:hover {
   background: tomato;
 /*  Making button bigger on hover  */
-  transform: scale(1.5) perspective(1px);
+  transform: scale(1.5) perspective(1px)
 }
