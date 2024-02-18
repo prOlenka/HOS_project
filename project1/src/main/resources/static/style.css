@@ -37,6 +37,8 @@ body{
   width: 300px;
   height: 50px;
   position: block;
+  cursor: pointer;
+  transition: box-shadow 200ms linear;
 }
 /*#move{*/
 /*  position: relative;*/
