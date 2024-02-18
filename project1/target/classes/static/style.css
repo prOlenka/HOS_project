@@ -1,33 +1,53 @@
 body{
   background: #a2efea;
 }
-div{
-  width: 300px;
-  height: 100px;
-  position: absolute;
+.form{
+  padding: 2em 2em 2em 2em;
+  width: 90rem;
+  height: auto;
+  position: block;
   margin: auto;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  background: #ff0;
   text-align: center;
 }
-button{
-  color: #ff0;
-  background: #000; 
-  border: none;
+.text{
+  display: block;
+  background: #ff0;
+  font-size: 1.5vw;
 }
-#move{
-  position: relative;
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: #ff0;
 }
-input{
-  color: #ff0;
-  background: #000; 
-  border: none;
+.column{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
-input.bigger:hover {
-  background: tomato;
-/*  Making button bigger on hover  */
-  transform: scale(1.5) perspective(1px)
+.button{
+  color: #a2efea;
+  background: #000;
+  border: 2px;
+  margin: 5px;
+  width: 300px;
+  height: 50px;
+  position: block;
 }
+/*#move{*/
+/*  position: relative;*/
+/*}*/
+/*input{*/
+/*  color: #ff0;*/
+/*  background: #000; */
+/*  border: none;*/
+/*}*/
+/*input.bigger:hover {*/
+/*  background: tomato;*/
+/*!*  Making button bigger on hover  *!*/
+/*  transform: scale(1.5) perspective(1px)*/
+/*}*/

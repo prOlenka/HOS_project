@@ -2,17 +2,34 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../style.css">
-  <title>Как ты и просила</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Как ты и просила</title>
 </head>
 <body>
-  <div class="buttons_form">
-    <p th:text = "${user}" />
-        <input type="button" class="bigger" value="Да, Дима, спасибо большое">
-        <button id="move" onmouseover="runaway(this)">Нет</button>
-  </div>
-  <script src="../script.js"></script>
+<form class="form text">
+    <p th:text = "${user}">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis mollis nisi eu sagittis. Maecenas viverra purus nec orci feugiat, in porta ante aliquet. Cras feugiat a mi ut rhoncus. Praesent pulvinar ante sit amet lorem scelerisque cursus. In tristique facilisis nisl sit amet imperdiet. Mauris ut est sapien. Suspendisse porttitor velit sit amet ultrices convallis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris dictum lacus mauris, sit amet aliquet lectus euismod vitae.
+
+        Nullam vestibulum felis efficitur metus tincidunt molestie. Donec laoreet magna nec tellus commodo vestibulum. Morbi malesuada libero sed ullamcorper maximus. In hac habitasse platea dictumst. Integer bibendum ultricies turpis at egestas. Quisque urna purus, rutrum ut commodo eu, auctor eu massa. Aliquam turpis enim, porttitor sed volutpat nec, pellentesque aliquam ex. Phasellus mattis eros non libero congue condimentum. Donec lorem risus, pulvinar id feugiat quis, vestibulum quis massa. Maecenas rhoncus, arcu ac consequat euismod, justo lacus lobortis est, ut molestie eros enim ut dolor. Maecenas mollis quis mi eu pharetra. Fusce non tincidunt orci, quis rhoncus purus.
+
+    </p>
+</form>
+<br>
+<form class="form buttons">
+    <div class="column first">
+        <input type="button" class="button" value="Button1">
+        <input type="button" class="button" value="Button2">
+        <input type="button" class="button" value="Button3">
+    </div>
+    <div class="column second">
+        <input type="button" class="button" value="Button4">
+        <input type="button" class="button" value="Button5">
+        <input type="button" class="button" value="Button6">
+    </div>
+    <!--        <button id="move" onmouseover="runaway(this)">Нет</button>-->
+</form>
+<script src="../script.js"></script>
 </body>
 </html>
