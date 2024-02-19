@@ -12,9 +12,4 @@ public class Project1Application {
 		SpringApplication.run(Project1Application.class, args);
 	}
 
-
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-//	}
-
 }
