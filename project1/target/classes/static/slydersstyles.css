@@ -1,0 +1,32 @@
+body{
+    background: darkmagenta;
+}
+.resizable{
+    background: #000000;
+    max-width: 40rem;
+}
+.resizable h3{
+    color: aqua;
+}
+.resizable p{
+    color: aquamarine;
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+.gallery{
+    margin-top: 50px;
+    display: flex;
+    gap: 30px;
+    max-width: 800px;
+    overflow: hidden;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+.resizable{
+    border-radius: 5%;
+    padding: 30px;
+    min-width: 500px;
+    scroll-snap-align: center;
+}
