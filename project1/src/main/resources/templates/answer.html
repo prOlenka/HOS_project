@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Эту я тоже просила</title>
+</head>
+<body>
+<header>
+    <!--    <a href="#footer">-->
+    <!--        <div class="fixed">-->
+    <!--            <p th:color="white">Downpage</p>-->
+    <!--        </div>-->
+    <!--    </a>-->
+    <!--<a href="../sliderpage.html">-->
+    <!--    whole form is the link-->
+    <form class="form text-block">
+        <!--/*@thymesVar id="user" type="java.lang.String"*/-->
+        <p th:text = "${user}">
+        </p>
+    </form>
+    <!--</a>-->
+</header>
+<br>
+<main>
+    <form class="form buttons">
+        <div class="column first">
+            <!--/*@thymesVar id="button1" type="java.lang.String"*/-->
+            <a href="../sliderpage.html">
+                <input type="button" class="button" th:value="${button1}">
+            </a>
+            <!--/*@thymesVar id="button2" type="java.lang.String"*/-->
+            <input type="button" class="button" th:value="${button2}">
+
+        </div>
+        <div class="column second">
+            <!--/*@thymesVar id="button3" type="java.lang.String"*/-->
+            <input type="button" class="button" th:value="${button3}">
+            <!--/*@thymesVar id="button4" type="java.lang.String"*/-->
+            <input type="button" class="button" th:value="${button4}">
+
+        </div>
+        <!--        <button id="move" onmouseover="runaway(this)">Нет</button>-->
+    </form>
+</main>
+<footer id="footer">
+
+</footer>
+<script src="../script.js"></script>
+</body>
+</html>
