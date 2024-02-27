@@ -19,6 +19,6 @@ public class SomeController {
     public String rightAnswer(Model page){
         page.addAttribute("user", "TEXT");
         page.addAttribute("button1", "button");
-        return "answer";
+        return "sliderpage";
     }
 }
