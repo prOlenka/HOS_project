@@ -15,7 +15,7 @@ import org.hibernate.annotations.DynamicUpdate;
 public class Questions {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//колонка генерируется на сотороне Postgre, Hibernate её не трогает
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//колонка генерируется на сотороне Postgres, Hibernate её не трогает
     private int id;
 
     @Column(name = "question")
@@ -30,7 +30,7 @@ public class Questions {
     @Column(name = "answer4")
     private String answer4;
 
-    private byte [] image;
+//    private byte [] image;
 
     public Questions(String question, String answer1, String answer2, String answer3, String answer4) {
         this.question = question;
@@ -43,4 +43,9 @@ public class Questions {
     public Questions() {
 
     }
+
+//    public Questions getRandomQuestion(){
+//        Questions q = new Questions();
+//        q.getQuestion(Math.random() * 6)
+//    }
 }
