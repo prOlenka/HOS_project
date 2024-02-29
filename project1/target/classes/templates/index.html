@@ -8,47 +8,67 @@
     <title>Как ты и просила</title>
 </head>
 <body>
-<header>
-<!--    <a href="#footer">-->
-<!--        <div class="fixed">-->
-<!--            <p th:color="white">Downpage</p>-->
-<!--        </div>-->
-<!--    </a>-->
-<!--<a href="../sliderpage.html">-->
-<!--    whole form is the link-->
-    <form class="form text-block">
-        <!--/*@thymesVar id="user" type="java.lang.String"*/-->
-        <p th:text = "${user}">
-        </p>
-    </form>
-<!--</a>-->
-</header>
-<br>
-<main>
-<form class="form buttons">
-    <div class="column first">
-        <!--/*@thymesVar id="button1" type="java.lang.String"*/-->
-        <a href="../right_answer">
-        <input type="button" class="button" th:value="${button1}">
-        </a>
-        <!--/*@thymesVar id="button2" type="java.lang.String"*/-->
-        <input type="button" class="button" th:value="${button2}">
-
-    </div>
-    <div class="column second">
-        <!--/*@thymesVar id="button3" type="java.lang.String"*/-->
-        <a href="../right_answer">
-        <input type="button" class="button" th:value="${button3}">
-        <!--/*@thymesVar id="button4" type="java.lang.String"*/-->
-        <input type="button" class="button" th:value="${button4}">
-
-    </div>
-    <!--        <button id="move" onmouseover="runaway(this)">Нет</button>-->
-</form>
-</main>
-<footer id="footer">
-
-</footer>
-<script src="../script.js"></script>
+<h1>Product list</h1>
+<table>
+    <tr>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>IN STOCK</th>
+    </tr>
+    <tr th:each="prod : ${prods}">
+        <td th:text="${prod.question}">Onions</td>
+        <td th:text="${prod.answer1}">2.41</td>
+    </tr>
+</table>
 </body>
+
+
+
+
+
+
+<!--<body>-->
+<!--<header>-->
+<!--&lt;!&ndash;    <a href="#footer">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="fixed">&ndash;&gt;-->
+<!--&lt;!&ndash;            <p th:color="white">Downpage</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="../sliderpage.html">&ndash;&gt;-->
+<!--&lt;!&ndash;    whole form is the link&ndash;&gt;-->
+<!--    <form class="form text-block">-->
+<!--        &lt;!&ndash;/*@thymesVar id="user" type="java.lang.String"*/&ndash;&gt;-->
+<!--        <div th:each="prod : ${param}">-->
+<!--            &lt;!&ndash;/*@thymesVar id="question" type="java.lang.Iterable"*/&ndash;&gt;-->
+<!--            <h3 th:text="${prod.question}"></h3>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--</header>-->
+<!--<br>-->
+<!--<main>-->
+<!--<form class="form buttons">-->
+<!--    <div class="column first">-->
+<!--        &lt;!&ndash;/*@thymesVar id="button1" type="java.lang.String"*/&ndash;&gt;-->
+<!--        <a href="../right_answer">-->
+<!--        <input type="button" class="button" th:value="${button1}">-->
+<!--        </a>-->
+<!--        &lt;!&ndash;/*@thymesVar id="button2" type="java.lang.String"*/&ndash;&gt;-->
+<!--        <input type="button" class="button" th:value="${button2}">-->
+<!--    </div>-->
+<!--    <div class="column second">-->
+<!--        &lt;!&ndash;/*@thymesVar id="button3" type="java.lang.String"*/&ndash;&gt;-->
+<!--        <a href="../right_answer">-->
+<!--        <input type="button" class="button" th:value="${button3}">-->
+<!--        &lt;!&ndash;/*@thymesVar id="button4" type="java.lang.String"*/&ndash;&gt;-->
+<!--        <input type="button" class="button" th:value="${button4}">-->
+<!--    </div>-->
+<!--    &lt;!&ndash;        <button id="move" onmouseover="runaway(this)">Нет</button>&ndash;&gt;-->
+<!--</form>-->
+<!--</main>-->
+<!--<footer id="footer">-->
+
+<!--</footer>-->
+<!--<script src="../script.js"></script>-->
+<!--</body>-->
 </html>
