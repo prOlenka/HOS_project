@@ -27,13 +27,26 @@ public class SomeController {
         ArrayList<Questions> q = new ArrayList<>();
         posts.ifPresent(q::add);
         page.addAttribute("prods", q );
-//        page.addAttribute("button1", q);
-//        page.addAttribute("button2", );
-        return "index";
+        return "question_start";
+    }
+
+    @RequestMapping("/answer")
+    public String answer(Model page){
+        // if --> right: wrong
+        return "question_start";
     }
 
     @RequestMapping("/right_answer")
     public String rightAnswer(Model page){
-        return "sliderpage";
+        return "right_answer";
+    }
+    @RequestMapping("/wrong_answer")
+    public String wrongAnswer(Model page){
+        return "wrong_answer";
+    }
+
+    @RequestMapping("/explanation")
+    public String explanation(Model page){
+        return "explanation";
     }
 }
