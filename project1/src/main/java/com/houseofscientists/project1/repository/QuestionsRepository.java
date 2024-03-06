@@ -12,5 +12,13 @@ import java.util.List;
 @Repository
 public interface QuestionsRepository extends JpaRepository<Questions, Long> {
         List<Questions> findAll();
-//        Questions findByNameAndStateAllIgnoringCase(String answer1, String answer2);
+
+//        public static Questions getRandomQuestion(){
+//        Questions q = new Questions();
+//        q.getQuestion();
+//        return q;
+//        }
 }
+
+
+//        Questions findByNameAndStateAllIgnoringCase(String answer1, String answer2);
