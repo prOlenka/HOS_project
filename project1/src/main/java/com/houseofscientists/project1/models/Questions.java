@@ -21,7 +21,6 @@ public class Questions {
     @Column(name = "question")
     private String question;
     @Column(name = "answer1")
-
     private String answer1;
     @Column(name = "answer2")
     private String answer2;
@@ -32,20 +31,4 @@ public class Questions {
 
 //    private byte [] image;
 
-    public Questions(String question, String answer1, String answer2, String answer3, String answer4) {
-        this.question = question;
-        this.answer1 = answer1;
-        this.answer2 = answer2;
-        this.answer3 = answer3;
-        this.answer4 = answer4;
-    }
-
-    public Questions() {
-
-    }
-
-//    public Questions getRandomQuestion(){
-//        Questions q = new Questions();
-//        q.getQuestion(Math.random() * 6)
-//    }
 }
