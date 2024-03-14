@@ -27,7 +27,7 @@
         <!--/*@thymesVar id="button1" type="java.lang.String"*/-->
         <a href="../right_answer">
             <div th:each="prod : ${prods}">
-                <input type="button" class="button" th:text="${prod.answer1}">
+                <input type="button" class="button" th:text="${prod.explanation}">
             </div>
 
         </a>
