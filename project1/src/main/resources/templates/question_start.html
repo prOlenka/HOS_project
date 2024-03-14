@@ -20,11 +20,12 @@
 <form class="form buttons">
     <div class="column first">
 <!--        /*@thymesVar id="button1" type="java.lang.String"*/-->
-            <div th:each="prod : ${answers}">
-                <a href="../answer"> <input type="button" class="button" th:value="${prod.answer}"> </a>
-                <a href="../explanation"> <input type="button" class="button" th:value="${prod.answer}"></a>
-                <input type="button" class="button" th:value="${prod.answer}">
-                <input type="button" class="button" th:value="${prod.answer}">
+            <div th:each="prod : ${ans}">
+<!--                <a href="../answer"> -->
+                    <input type="button" class="button" th:value="${prod.answer}"> </a>
+<!--                <a href="../explanation"> <input type="button" class="button" th:value="${prod.answer}"></a>-->
+<!--                <input type="button" class="button" th:value="${prod.answer}">-->
+<!--                <input type="button" class="button" th:value="${prod.answer}">-->
             </div>
 </form>
 </main>

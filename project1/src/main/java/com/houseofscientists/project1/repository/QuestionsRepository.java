@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface QuestionsRepository extends JpaRepository<Questions, Long> {
         @Modifying
-        @Query("SELECT u FROM Questions u WHERE u.question= ?1")
-        List<Questions> findAllByQuestion(@Param("main") String main);
+        @Query("SELECT u FROM Questions u WHERE u.id= ?1")
+        List<Questions> findById(@Param("main") int main);
 
 //        public static Questions getRandomQuestion(){
 //        Questions q = new Questions();
