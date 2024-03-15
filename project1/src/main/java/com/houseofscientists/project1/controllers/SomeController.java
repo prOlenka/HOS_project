@@ -25,7 +25,7 @@ public class SomeController {
         int i = 1; //= (int)(Math.random() * 6);
 
         page.addAttribute("prods", questionsRepository.findById(i));
-        page.addAttribute("ans", answersRepository.findAll());
+        page.addAllAttribute("ans", answersRepository.findAllByIdQuestions(i));
 
 //        page.addAttribute("button1", q);
 //        page.addAttribute("button2", );
