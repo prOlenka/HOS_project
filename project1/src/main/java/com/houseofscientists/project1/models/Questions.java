@@ -20,14 +20,8 @@ public class Questions {
 
     @Column(name = "question")
     private String question;
-    @Column(name = "answer1")
-    private String answer1;
-    @Column(name = "answer2")
-    private String answer2;
-    @Column(name = "answer3")
-    private String answer3;
-    @Column(name = "answer4")
-    private String answer4;
+    @Column(name = "explanation")
+    private String explanation;
 
 //    private byte [] image;
 
