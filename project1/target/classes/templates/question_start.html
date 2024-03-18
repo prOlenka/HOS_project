@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="min-width=device-width, min-height=device-height, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="../question_start.css" />
     <title>Вопросы</title>
-</head>
-<body>
-<h1>
-    <tr th:each="prod : ${prods}">
-        <td th:text="${prod.question}"></td>
-    </tr>
-</h1>
-
-</table>
-</body>
-<main>
-<form class="form buttons">
-    <div class="column first">
-<!--        /*@thymesVar id="button1" type="java.lang.String"*/-->
-            <div th:each="prod : ${ans}">
-<!--                <a href="../answer"> -->
-                    <input type="button" class="button" th:value="${prod.answer}"> </a>
-<!--                <a href="../explanation"> <input type="button" class="button" th:value="${prod.answer}"></a>-->
-<!--                <input type="button" class="button" th:value="${prod.answer}">-->
-<!--                <input type="button" class="button" th:value="${prod.answer}">-->
-            </div>
-</form>
-</main>
-<!--<footer id="footer">-->
-
-<!--</footer>-->
-<!--<script src="../script.js"></script>-->
-<!--</body>-->
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="question">
+<!--          <div th:each="prod : ${prods}">-->
+<!--            <h1 th:text="${prod.question}"></h1>-->
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="buttons">
+          <div>
+            <input
+              type="button"
+              class="button">
+<!--              th:each="prod : ${ans}"-->
+<!--              th:value="${prod.answer}">-->
+          </div>
+        </div>
+        <div class="spacer"></div>
+      </div>
+    </main>
+  </body>
 </html>
