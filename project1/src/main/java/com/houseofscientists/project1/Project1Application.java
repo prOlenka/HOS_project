@@ -12,7 +12,7 @@ public class Project1Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Project1Application.class, args);
-		Configuration configuration = new Configuration().addAnnotatedClass(Questions.class);
+//		Configuration configuration = new Configuration().addAnnotatedClass(Questions.class);
 
 
 	}

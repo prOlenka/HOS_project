@@ -12,6 +12,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "Questions")
+
 public class Questions {
     @Id
     @Column(name = "id")

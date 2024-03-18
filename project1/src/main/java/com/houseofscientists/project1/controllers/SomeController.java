@@ -22,10 +22,10 @@ public class SomeController {
 
     @RequestMapping("/")
     public String sayHello(Model page){
-        int i = 1; //= (int)(Math.random() * 6);
+        Long i = 1L; //= (int)(Math.random() * 6);
 
         page.addAttribute("prods", questionsRepository.findById(i));
-        page.addAllAttribute("ans", answersRepository.findAllByIdQuestions(i));
+        page.addAttribute("ans", answersRepository.findByIdQuestions(i));
 
 //        page.addAttribute("button1", q);
 //        page.addAttribute("button2", );

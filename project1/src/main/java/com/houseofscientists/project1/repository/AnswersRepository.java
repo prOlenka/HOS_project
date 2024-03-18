@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface AnswersRepository extends JpaRepository<Answers, Long> {
-    @Modifying
-    @Query("SELECT u FROM Answers u WHERE u.id_questions= ?1")
-    List<Questions> findAllByIdQuestions(@Param("main") int main);
+
+    List<Answers> findByIdQuestions(Long l);
+//    @Modifying
+//    @Query("SELECT u FROM Answers u WHERE u.id_questions= ?1")
+//    List<Questions> findAllByIdQuestions(@Param("main") int main);
 
     
 //    public static @NotNull ArrayList<Answers> findAnswersById_questionsContains(Long id){

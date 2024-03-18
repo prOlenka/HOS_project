@@ -19,11 +19,11 @@ public class Answers {
     private Long id;
 
     @Column(name = "id_questions")
-    private Long id_questions;
+    private Long idQuestions;
     @Column(name = "answer")
     private String answer;
     @Column(name = "right_answer")
-    private Long right_answer;
+    private Long rightAnswer;
 
 //    private byte [] image;
 

@@ -9,7 +9,7 @@
       content="min-width=device-width, min-height=device-height, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="../static/question_start.css" />
+      href="../question_start.css" />
     <title>Вопросы</title>
   </head>
   <body>
@@ -17,17 +17,18 @@
       <div class="container">
         <div class="spacer"></div>
         <div class="question">
-          <div th:each="prod : ${prods}">
-            <h1 th:text="${prod.question}"></h1>
+<!--          <div th:each="prod : ${prods}">-->
+<!--            <h1 th:text="${prod.question}"></h1>-->
           </div>
         </div>
         <div class="spacer"></div>
         <div class="buttons">
-          <div th:each="prod : ${ans}">
+          <div>
             <input
               type="button"
-              class="button"
-              th:value="${prod.answer}" />
+              class="button">
+<!--              th:each="prod : ${ans}"-->
+<!--              th:value="${prod.answer}">-->
           </div>
         </div>
         <div class="spacer"></div>
