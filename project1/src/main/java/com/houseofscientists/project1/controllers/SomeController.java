@@ -21,14 +21,18 @@ public class SomeController {
 
 
     @RequestMapping("/")
+    public String start(){
+        return "start_page";
+    }
+
+
+    @RequestMapping("/question_start")
     public String sayHello(Model page){
         Long i = 1L; //= (int)(Math.random() * 6);
 
-        page.addAttribute("prods", questionsRepository.findById(1));
+        page.addAttribute("que", questionsRepository.findById(1));
         page.addAttribute("ans", answersRepository.findByIdQuestions(i));
 
-//        page.addAttribute("button1", q);
-//        page.addAttribute("button2", );
         return "question_start";
     }
 

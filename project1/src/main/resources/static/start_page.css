@@ -1,0 +1,35 @@
+body {
+  font-size: 16px;
+  background-image: url("images/background.webp");
+  background-size: cover;
+}
+.container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.spacer {
+  padding: 2.5rem;
+}
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.question h1 {
+  font-size: 1.2rem;
+}
+.buttons {
+  padding-top: 16rem;
+  display: inline;
+  flex-flow: column wrap;
+}
+.button {
+  padding: 2rem;
+  color: aliceblue;
+  background-color: #3a9319;
+  font-size: 1rem;
+}
