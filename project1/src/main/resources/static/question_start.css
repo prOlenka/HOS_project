@@ -1,6 +1,6 @@
 body {
   font-size: 16px;
-  background-image: url('../16to9_background.webp');
+  background-image: url("images/16to9_background.webp");
   background-size: cover;
 }
 .container {
@@ -24,12 +24,10 @@ body {
 }
 .buttons {
   padding-top: 2.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15rem;
+  display: flex;
+  flex-flow: column wrap;
 }
 .button {
-  min-width: 10rem;
   color: aliceblue;
   background-color: darkblue;
   font-size: 1rem;

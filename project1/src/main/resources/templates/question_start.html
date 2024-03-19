@@ -10,6 +10,8 @@
     <link
       rel="stylesheet"
       href="../question_start.css" />
+<!--      <img th:src="@{/images/front.jpeg}"/>-->
+<!--      <img th:icon="images" alt="Замещающий текст">-->
     <title>Вопросы</title>
   </head>
   <body>
@@ -17,8 +19,13 @@
       <div class="container">
         <div class="spacer"></div>
         <div class="question">
-<!--          <div th:each="prod : ${prods}">-->
-<!--            <h1 th:text="${prod.question}"></h1>-->
+            <!--          <div th:each="prod : ${prods}"-->
+            <div>
+<!--                    th:each="prod : ${prods}"-->
+<!--                th:text="${prod.question}">-->
+            <th:block th:each="flower : ${prods}">
+                <li th:utext="${flower.question}">..</li>
+            </th:block>
           </div>
         </div>
         <div class="spacer"></div>
@@ -26,9 +33,9 @@
           <div>
             <input
               type="button"
-              class="button">
-<!--              th:each="prod : ${ans}"-->
-<!--              th:value="${prod.answer}">-->
+              class="button"
+              th:each="prod : ${ans}"
+              th:value="${prod.answer}">
           </div>
         </div>
         <div class="spacer"></div>
