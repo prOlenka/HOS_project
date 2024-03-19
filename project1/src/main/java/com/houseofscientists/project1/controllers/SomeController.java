@@ -24,7 +24,7 @@ public class SomeController {
     public String sayHello(Model page){
         Long i = 1L; //= (int)(Math.random() * 6);
 
-        page.addAttribute("prods", questionsRepository.findAll());
+        page.addAttribute("prods", questionsRepository.findById(1));
         page.addAttribute("ans", answersRepository.findByIdQuestions(i));
 
 //        page.addAttribute("button1", q);

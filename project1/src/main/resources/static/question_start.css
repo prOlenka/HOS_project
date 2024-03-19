@@ -1,6 +1,6 @@
 body {
   font-size: 16px;
-  background-image: url("images/16to9_background.webp");
+  background-image: url("images/background_light.jpg");
   background-size: cover;
 }
 .container {
@@ -23,12 +23,13 @@ body {
   font-size: 1.2rem;
 }
 .buttons {
-  padding-top: 2.5rem;
-  display: flex;
+  padding-top: 16rem;
+  display: inline;
   flex-flow: column wrap;
 }
 .button {
+  padding: 2rem;
   color: aliceblue;
-  background-color: darkblue;
+  background-color: #3a9319;
   font-size: 1rem;
 }
