@@ -4,6 +4,7 @@ import com.houseofscientists.project1.repository.AnswersRepository;
 import com.houseofscientists.project1.repository.QuestionsRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping
@@ -32,6 +33,42 @@ public class SomeController {
 
         page.addAttribute("que", questionsRepository.findById(1));
         page.addAttribute("ans", answersRepository.findByIdQuestions(i));
+
+        return "question_start";
+    }
+
+    @GetMapping("/question_start/star")
+    public String star(Model page){
+
+        return "question_start";
+    }
+    @GetMapping("/question_start/mathematics")
+    public String mathematics(Model page){
+
+        return "question_start";
+    }
+    @GetMapping("/question_start/biology")
+    public String biology(Model page){
+
+        return "question_start";
+    }
+    @GetMapping("/question_start/chess")
+    public String chess(Model page){
+        return "question_start";
+    }
+    @GetMapping("/question_start/physics")
+    public String physics(Model page){
+
+        return "question_start";
+    }
+
+    @GetMapping("/question_start/globe")
+    public String globe(Model page){
+
+        return "question_start";
+    }
+    @GetMapping("/question_start/registry")
+    public String registry(Model page){
 
         return "question_start";
     }
