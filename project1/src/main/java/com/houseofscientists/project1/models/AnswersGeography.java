@@ -11,8 +11,8 @@ import org.hibernate.annotations.DynamicUpdate;
 @Setter
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "Answers")
-public class Answers {
+@Table(name = "answers_geography")
+public class AnswersGeography {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY) //колонка генерируется на сотороне Postgres, Hibernate её не трогает
