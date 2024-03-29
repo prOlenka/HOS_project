@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface QuestionsGeographyRepository extends JpaRepository<QuestionsGeography, Long> {
         @Modifying
-        @Query("SELECT u FROM QuestionsPhysics u WHERE u.id= ?1")
+        @Query("SELECT u FROM QuestionsGeography u WHERE u.id= ?1")
         List<QuestionsGeography> findById(@Param("main") int main);
 }

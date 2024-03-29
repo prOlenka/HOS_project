@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AnswersPhysicsRepository extends JpaRepository<AnswersPhysics, Long> {
 
-    List<AnswersPhysics> findByIdQuestions(int l);
+    List<AnswersPhysics> findAnswersPhysicsByIdQuestions(Long l);
 }

@@ -9,10 +9,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface QuestionsPhysicsRepository extends JpaRepository<QuestionsPhysics, Long> {
         @Modifying
         @Query("SELECT u FROM QuestionsPhysics u WHERE u.id= ?1")
         List<QuestionsPhysics> findById(@Param("main") int main);
+
+//        List<QuestionsPhysics> findQuestionsPhysicsById(Long l);
 }

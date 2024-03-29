@@ -1,6 +1,7 @@
 package com.houseofscientists.project1.repository;
 
 import com.houseofscientists.project1.models.QuestionsBiology;
+import com.houseofscientists.project1.models.QuestionsPhysics;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,6 +12,8 @@ import java.util.List;
 
 @Repository
 public interface QuestionsBiologyRepository extends JpaRepository<QuestionsBiology, Long> {
+
+//        List<QuestionsPhysics> findQuestionsBiologyById(Long l);
         @Modifying
         @Query("SELECT u FROM QuestionsBiology u WHERE u.id= ?1")
         List<QuestionsBiology> findById(@Param("main") int main);

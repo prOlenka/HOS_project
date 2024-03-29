@@ -16,31 +16,22 @@ public class SomeController {
     private final AnswersPhysicsRepository answersPhysicsRepository;
     private final QuestionsGeographyRepository questionsGeographyRepository;
     private final AnswersGeographyRepository answersGeographyRepository;
+    private final RegisterRepository registerRepository;
 
-    public SomeController(QuestionsBiologyRepository questionsBiologyRepository, AnswersBiologyRepository answersBiologyRepository, QuestionsPhysicsRepository questionsPhysicsRepository, AnswersPhysicsRepository answersPhysicsRepository, QuestionsGeographyRepository questionsGeographyRepository, AnswersGeographyRepository answersGeographyRepository) {
+    public SomeController(QuestionsBiologyRepository questionsBiologyRepository, AnswersBiologyRepository answersBiologyRepository, QuestionsPhysicsRepository questionsPhysicsRepository, AnswersPhysicsRepository answersPhysicsRepository, QuestionsGeographyRepository questionsGeographyRepository, AnswersGeographyRepository answersGeographyRepository, RegisterRepository registerRepository) {
         this.questionsBiologyRepository = questionsBiologyRepository;
         this.answersBiologyRepository = answersBiologyRepository;
         this.questionsPhysicsRepository = questionsPhysicsRepository;
         this.answersPhysicsRepository = answersPhysicsRepository;
         this.questionsGeographyRepository = questionsGeographyRepository;
         this.answersGeographyRepository = answersGeographyRepository;
+        this.registerRepository = registerRepository;
     }
 
     @RequestMapping("/")
     public String start(){
         return "start_page";
     }
-
-
-//    @RequestMapping("/question_start")
-//    public String sayHello(Model page){
-//        int i = 1; //= (int)(Math.random() * 6);
-//
-//        page.addAttribute("que", questionsBiologyRepository.findById(1));
-//        page.addAttribute("ans", answersBiologyRepository.findByIdQuestions(i));
-//
-//        return "question_start";
-//    }
 
     @GetMapping("/question_start/star")
     public String star(Model page){
@@ -62,16 +53,18 @@ public class SomeController {
     }
     @GetMapping("/question_start/biology")
     public String biology(Model page){
-        int i = 1; //= (int)(Math.random() * 6);
+        int i = 2; //= (int)(Math.random() * 6);
+        Long k = (long) i;
 
-        page.addAttribute("que", questionsBiologyRepository.findById(1));
-        page.addAttribute("ans", answersBiologyRepository.findByIdQuestions(i));
+        page.addAttribute("que", questionsBiologyRepository.findById(2));
+        page.addAttribute("ans", answersBiologyRepository.findAnswersBiologyByIdQuestions(k));
 
         return "question_start";
     }
     @GetMapping("/question_start/chess")
     public String chess(Model page){
         int i = 1; //= (int)(Math.random() * 6);
+        Long k = (long) i;
 
 //        page.addAttribute("que", questionsChessRepository.findById(1));
 //        page.addAttribute("ans", answersChessRepository.findByIdQuestions(i));
@@ -79,10 +72,10 @@ public class SomeController {
     }
     @GetMapping("/question_start/physics")
     public String physics(Model page){
-        int i = 1; //= (int)(Math.random() * 6);
+        Long i = 1L; //= (int)(Math.random() * 6);
 
         page.addAttribute("que", questionsPhysicsRepository.findById(1));
-        page.addAttribute("ans", answersPhysicsRepository.findByIdQuestions(i));
+        page.addAttribute("ans", answersPhysicsRepository.findAnswersPhysicsByIdQuestions(1L));
 
         return "question_start";
     }
@@ -90,16 +83,19 @@ public class SomeController {
     @GetMapping("/question_start/globe")
     public String globe(Model page){
         int i = 1; //= (int)(Math.random() * 6);
+        Long k = (long) i;
 
-        page.addAttribute("que", questionsGeographyRepository.findById(1));
-        page.addAttribute("ans", answersGeographyRepository.findByIdQuestions(Long.parseLong(String.valueOf(i))));
+        page.addAttribute("que", questionsGeographyRepository.findById(i));
+        page.addAttribute("ans", answersGeographyRepository.findByIdQuestions(k));
 
         return "question_start";
     }
-    @GetMapping("/question_start/registry")
-    public String registry(Model page){
+    @GetMapping("/question_start/register")
+    public String register(Model page){
+        Long i = 1L; //= (int)(Math.random() * 6);
+        page.addAttribute("description",registerRepository.findAllById(i));
 
-        return "question_start";
+        return "register";
     }
 
     @RequestMapping("/answer")

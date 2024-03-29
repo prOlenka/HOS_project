@@ -16,7 +16,7 @@ import org.hibernate.annotations.DynamicUpdate;
 public class QuestionsPhysics {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//колонка генерируется на сотороне Postgres, Hibernate её не трогает
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "question")

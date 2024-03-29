@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AnswersBiologyRepository extends JpaRepository<AnswersBiology, Long> {
 
-    List<AnswersBiology> findByIdQuestions(int l);
+    List<AnswersBiology> findAnswersBiologyByIdQuestions(Long idQuestions);
 }
