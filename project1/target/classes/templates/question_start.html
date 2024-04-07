@@ -21,8 +21,9 @@
         <div class="question">
             <!--          <div th:each="prod : ${prods}"-->
             <div>
-            <th:block th:each="qList : ${que}">
-                <li th:text="${qList.question}">..</li>
+<!--            <th:block th:each="qList : ${que}">-->
+<!--                <li th:text="${qList.question}">..</li>-->
+              <th:block th:text="qList">-->
             </th:block>
           </div>
         </div>
@@ -33,8 +34,9 @@
             <input
               type="button"
               class="button"
-              th:each="aList : ${ans}"
-              th:value="${aList.answer}">
+              th:value="question1">
+<!--              th:each="aList : ${ans}"-->
+<!--              th:value="${aList.answer}">-->
           </div>
         </div>
         <div class="spacer"></div>
