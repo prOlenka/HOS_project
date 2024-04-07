@@ -1,28 +1,164 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-<header th:fragment="header">
-  <h1>Welcome to My Quest</h1>
-  <link
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta
+      name="viewport"
+      content="min-width=device-width, min-height=device-height, initial-scale=1.0" /> -->
+    <title></title>
+  </head>
+  <body>
+    <header th:fragment="header">
+      <!-- <link
           rel="stylesheet"
-          href="../start_page.css" />
-</header>
+          href="../static/start_page.css" /> -->
+    </header>
 
-<nav th:fragment="menu">
+    <nav
+      th:fragment="menu"
+      class="menu">
+      <a
+        href="/question_start/star"
+        id="star"
+        ><img
+          src="../static/images/a-star.png"
+          alt="a star"
+          class="star"
+      /></a>
+      <a
+        href="/question_start/mathematics"
+        id="mathematics"
+        ><img
+          src="../static/images/a-mathematik.png"
+          alt="a mathematik"
+          class="mathematics"
+      /></a>
+      <a
+        href="/question_start/biology"
+        id="biology"
+        ><img
+          src="../static/images/biology-piece.png"
+          alt="biology"
+          class="biology"
+      /></a>
+      <a
+        href="/question_start/chess"
+        id="chess"
+        ><img
+          src="../static/images/chess.png"
+          alt="chess"
+          class="chess"
+      /></a>
+      <a
+        href="/question_start/physics"
+        id="physics"
+        ><img
+          src="../static/images/atom-physics.png"
+          alt="atom"
+          class="physics"
+      /></a>
+      <a
+        href="/question_start/globe"
+        id="globe"
+        ><img
+          src="../static/images/globe.png"
+          alt="globe"
+          class="globe"
+      /></a>
+      <a
+        href="/question_start/register"
+        id="scientist"
+        ><img
+          src="../static/images/scientist-boy.png"
+          alt="scientist"
+          class="scientist"
+      /></a>
+    </nav>
 
-  <a th:href="@{/question_start/star}"><img th:src="@{images/a-star.png}" width="300" alt="a star"></a>
-  <a th:href="@{/question_start/mathematics}"><img th:src="@{images/a-mathematik.png}" width="300" style="position: relative; left: 900px;" alt="a mathematik"></a>
-  <a th:href="@{/question_start/biology}"><img th:src="@{images/biology-piece.png}" width="300" alt="biology piece"></a>
-  <a th:href="@{/question_start/chess}"><img th:src="@{images/chess.png}" width="300" alt="chess"></a>
-  <a th:href="@{/question_start/physics}"><img th:src="@{images/atom-physics.png}" width="300" alt="atom"></a>
-  <a th:href="@{/question_start/globe}"><img th:src="@{images/globe.png}" width="300" alt="globe"></a>
-  <a th:href="@{/question_start/register}"><img th:src="@{images/scientist-boy.png}" width="400" style="position: relative; bottom: 10px;" alt="scientist boy"></a>
-</nav>
+    <style>
+      body {
+        font-size: 16px;
+        background: url('../static/images/background.webp') no-repeat center center fixed;
+        background-size: cover;
+        overflow: hidden;
+      }
+      .menu {
+        display: grid;
+        grid-gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-columns: repeat(5, 384px);
+        grid-template-rows: repeat(3, 360px);
+        grid-template-areas:
+          'biology biology  star . mathematics'
+          '. globe scientist chess mathematics'
+          ' physics physics scientist . .';
+      }
+      .star {
+        width: 400px;
+        height: 400px;
+      }
+      #star {
+        grid-area: star;
+        align-self: center;
+        justify-self: center;
+      }
+      .mathematics {
+        width: 250px;
+        height: 292px;
+      }
+      #mathematics {
+        grid-area: mathematics;
+        align-self: center;
+        justify-self: start;
+      }
+      .biology {
+        width: 380px;
+        height: 315px;
+      }
+      #biology {
+        grid-area: biology;
+        align-self: center;
+        justify-self: center;
+      }
+      .chess {
+        width: 380px;
+        height: 272px;
+      }
+      #chess {
+        grid-area: chess;
+        align-self: center;
+        justify-self: center;
+      }
+      .physics {
+        width: 400px;
+        height: 400px;
+      }
 
-</body>
-</html>
-</head>
-<body>
-
-</body>
+      #physics {
+        grid-area: physics;
+        align-self: center;
+        justify-self: center;
+      }
+      .globe {
+        width: 260px;
+        height: 270px;
+      }
+      #globe {
+        grid-area: globe;
+        align-self: center;
+        justify-self: center;
+      }
+      /* .scientist {
+        width: 305px;
+        height: 555px;
+      } */
+      #scientist {
+        grid-area: scientist;
+        align-self: center;
+        justify-self: center;
+      }
+    </style>
+  </body>
 </html>
