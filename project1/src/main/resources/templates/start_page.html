@@ -36,14 +36,17 @@
         </div>
       </div>
       <div class="fourth column">
+        <div class="spacer"></div>
         <div class="item chess">
           <a href="/question_start/chess"><img src="../static/images/chess.png" /></a>
         </div>
+        <div class="spacer"></div>
       </div>
       <div class="fifth column">
         <div class="item math">
           <a href="/question_start/mathematics"><img src="../static/images/a-mathematik.png" /></a>
         </div>
+        <div class="spacer"></div>
       </div>
     </div>
 
@@ -61,13 +64,27 @@
         justify-content: space-around;
         flex-wrap: wrap;
         overflow: hidden;
-        padding-left: 10vw;
+        padding: 0 auto;
       }
       .column {
         display: flex;
         flex-direction: column;
+        width: 384px;
       }
       .first {
+        justify-content: space-around;
+      }
+      .second {
+        justify-content: flex-end;
+      }
+      .third {
+        justify-content: space-between;
+      }
+      .fourth {
+        justify-self: space-around;
+      }
+      .fifth {
+        justify-content: space-around;
       }
       .item {
         flex: 0 1 auto;
@@ -94,15 +111,15 @@
         height: 300px;
       }
       .chess {
+        padding-top: 125%;
         width: 380px;
         height: 272px;
       }
       .math {
-        left: 30vw;
-        right: 30vw;
         width: 250px;
         height: 292px;
       }
+
       .boy {
         width: 300px;
       }
