@@ -92,8 +92,7 @@ public class SomeController {
     }
     @GetMapping("/question_start/register")
     public String register(Model page){
-        Long i = 1L; //= (int)(Math.random() * 6);
-        page.addAttribute("description",registerRepository.findAllById(i));
+        page.addAttribute("description",registerRepository.findAllById(1L));
 
         return "register";
     }

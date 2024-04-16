@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link
+            rel="stylesheet"
+            href="../question_start.css" />
     <title>Реестр</title>
 </head>
 <body>
+<div>
+<!--    <th:block th:value="description"></th:block>-->
+    <th:block th:each="dList : ${description}">
+        <h1 align="center" th:text="${dList.title}">..</h1>
+        <span><h3 th:text="${dList.description}">..</h3></span>
 
+</div>
 </body>
 </html>

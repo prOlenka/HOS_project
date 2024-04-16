@@ -19,10 +19,10 @@ public class Register {
     private Long id;
 
     @Column(name = "description")
-    private Long description;
+    private String description;
     @Column(name = "picture")
     private String picture;
     @Column(name = "title")
-    private Long title;
+    private String title;
 
 }

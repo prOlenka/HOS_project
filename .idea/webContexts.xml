@@ -5,6 +5,8 @@
       <map>
         <entry key="file://$PROJECT_DIR$/project1/src/main/resources/templates/index.html" value="file://$PROJECT_DIR$/project1/src/main/resources/templates" />
         <entry key="file://$PROJECT_DIR$/project1/src/main/resources/templates/question_start.html" value="file://$PROJECT_DIR$/project1/src/main/resources/templates" />
+        <entry key="file://$PROJECT_DIR$/project1/src/main/resources/templates/register.html" value="file://$PROJECT_DIR$/project1/src/main/resources/templates" />
+        <entry key="file://$PROJECT_DIR$/project1/src/main/resources/templates/start_page.html" value="file://$PROJECT_DIR$/project1/src/main/resources/templates" />
       </map>
     </option>
   </component>

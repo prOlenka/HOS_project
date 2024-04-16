@@ -1,28 +1,135 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-<header th:fragment="header">
-  <h1>Welcome to My Quest</h1>
-  <link
-          rel="stylesheet"
-          href="../static/start_page.css" />
-</header>
-
-<nav th:fragment="menu">
-
-  <a th:href="@{/question_start/star}"><img th:src="@{images/a-star.png}" width="300" alt="a star"></a>
-  <a th:href="@{/question_start/mathematics}"><img th:src="@{images/a-mathematik.png}" width="300" style="position: relative; left: 900px;" alt="a mathematik"></a>
-  <a th:href="@{/question_start/biology}"><img th:src="@{images/biology-piece.png}" width="300" alt="biology piece"></a>
-  <a th:href="@{/question_start/chess}"><img th:src="@{images/chess.png}" width="300" alt="chess"></a>
-  <a th:href="@{/question_start/physics}"><img th:src="@{images/atom-physics.png}" width="300" alt="atom"></a>
-  <a th:href="@{/question_start/globe}"><img th:src="@{images/globe.png}" width="300" alt="globe"></a>
-  <a th:href="@{/question_start/register}"><img th:src="@{images/scientist-boy.png}" width="400" style="position: relative; bottom: 10px;" alt="scientist boy"></a>
-</nav>
-
-</body>
-</html>
+<html lang="en">
+<!-- xmlns:th="http://www.thymeleaf.org" -->
+<head>
+  <meta charset="UTF-8" />
+  <meta
+          name="viewport"
+          content="width=1920, height=1080, minimum-scale=1.0" />
+  <title></title>
 </head>
 <body>
+<div class="container">
+  <div class="first column">
+    <div class="item biology">
+      <a
+              href="/question_start/biology"
+              id="biology"
+      ><img src="../images/biology-piece.png"
+      /></a>
+    </div>
+    <div class="item physics">
+      <a href="/question_start/physics"><img src="../images/atom-physics.png" /></a>
+    </div>
+  </div>
+  <div class="second column">
+    <div class="item globe">
+      <a href="/question_start/globe"><img src="../images/globe.png" /></a
+      ></div>
+  </div>
+  <div class="third column">
+    <div class="item star">
+      <a href="/question_start/star"><img src="../images/a-star.png" /></a>
+    </div>
+    <div class="item boy">
+      <a href="/question_start/register"><img src="../images/scientist-boy.png" /></a>
+    </div>
+  </div>
+  <div class="fourth column">
+    <div class="spacer"></div>
+    <div class="item chess">
+      <a href="/question_start/chess"><img src="../images/chess.png" /></a>
+    </div>
+    <div class="spacer"></div>
+  </div>
+  <div class="fifth column">
+    <div class="item math">
+      <a href="/question_start/mathematics"><img src="../images/a-mathematik.png" /></a>
+    </div>
+    <div class="spacer"></div>
+  </div>
+</div>
 
+<style>
+  body {
+    background: url('../images/background.webp') no-repeat center center fixed;
+    background-size: contain;
+    overflow: hidden;
+  }
+  .container {
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding-left: 10vw;
+    padding: 0 auto;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    width: 384px;
+  }
+  .first {
+    justify-content: space-around;
+  }
+  .second {
+    justify-content: flex-end;
+  }
+  .third {
+    justify-content: space-between;
+  }
+  .fourth {
+    justify-self: space-around;
+  }
+  .fifth {
+    justify-content: space-around;
+  }
+  .item {
+    flex: 0 1 auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  img {
+    width: 100%;
+  }
+  .star {
+    width: 300px;
+    height: 300px;
+  }
+  .biology {
+    width: 380px;
+    height: 315px;
+  }
+  .globe {
+    width: 260px;
+    height: 270px;
+  }
+  .physics {
+    width: 300px;
+    height: 300px;
+  }
+  .chess {
+    padding-top: 125%;
+    width: 380px;
+    height: 272px;
+  }
+  .math {
+    left: 30vw;
+    right: 30vw;
+    width: 250px;
+    height: 292px;
+  }
+
+  .boy {
+    width: 300px;
+  }
+  .boy img {
+    height: 555px;
+    width: 550px;
+  }
+</style>
 </body>
 </html>

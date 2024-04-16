@@ -1,7 +1,11 @@
 package com.houseofscientists.project1.repository;
 
 import com.houseofscientists.project1.models.QuestionsBiology;
-import com.houseofscientists.project1.models.QuestionsPhysics;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
