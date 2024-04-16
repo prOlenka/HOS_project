@@ -1,163 +1,131 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+  <!-- xmlns:th="http://www.thymeleaf.org" -->
   <head>
     <meta charset="UTF-8" />
-    <!-- <meta
+    <meta
       name="viewport"
-      content="min-width=device-width, min-height=device-height, initial-scale=1.0" /> -->
+      content="width=1920, height=1080, minimum-scale=1.0" />
     <title></title>
   </head>
   <body>
-    <header th:fragment="header">
-      <!-- <link
-          rel="stylesheet"
-          href="../static/start_page.css" /> -->
-    </header>
-
-    <nav
-      th:fragment="menu"
-      class="menu">
-      <a
-        href="/question_start/star"
-        id="star"
-        ><img
-          src="../static/images/a-star.png"
-          alt="a star"
-          class="star"
-      /></a>
-      <a
-        href="/question_start/mathematics"
-        id="mathematics"
-        ><img
-          src="../static/images/a-mathematik.png"
-          alt="a mathematik"
-          class="mathematics"
-      /></a>
-      <a
-        href="/question_start/biology"
-        id="biology"
-        ><img
-          src="../static/images/biology-piece.png"
-          alt="biology"
-          class="biology"
-      /></a>
-      <a
-        href="/question_start/chess"
-        id="chess"
-        ><img
-          src="../static/images/chess.png"
-          alt="chess"
-          class="chess"
-      /></a>
-      <a
-        href="/question_start/physics"
-        id="physics"
-        ><img
-          src="../static/images/atom-physics.png"
-          alt="atom"
-          class="physics"
-      /></a>
-      <a
-        href="/question_start/globe"
-        id="globe"
-        ><img
-          src="../static/images/globe.png"
-          alt="globe"
-          class="globe"
-      /></a>
-      <a
-        href="/question_start/register"
-        id="scientist"
-        ><img
-          src="../static/images/scientist-boy.png"
-          alt="scientist"
-          class="scientist"
-      /></a>
-    </nav>
+    <div class="container">
+      <div class="first column">
+        <div class="item biology">
+          <a
+            href="/question_start/biology"
+            id="biology"
+            ><img src="../static/images/biology-piece.png"
+          /></a>
+        </div>
+        <div class="item physics">
+          <a href="/question_start/physics"><img src="../static/images/atom-physics.png" /></a>
+        </div>
+      </div>
+      <div class="second column">
+        <div class="item globe">
+          <a href="/question_start/globe"><img src="../static/images/globe.png" /></a
+        ></div>
+      </div>
+      <div class="third column">
+        <div class="item star">
+          <a href="/question_start/star"><img src="../static/images/a-star.png" /></a>
+        </div>
+        <div class="item boy">
+          <a href="/question_start/register"><img src="../static/images/scientist-boy.png" /></a>
+        </div>
+      </div>
+      <div class="fourth column">
+        <div class="spacer"></div>
+        <div class="item chess">
+          <a href="/question_start/chess"><img src="../static/images/chess.png" /></a>
+        </div>
+        <div class="spacer"></div>
+      </div>
+      <div class="fifth column">
+        <div class="item math">
+          <a href="/question_start/mathematics"><img src="../static/images/a-mathematik.png" /></a>
+        </div>
+        <div class="spacer"></div>
+      </div>
+    </div>
 
     <style>
       body {
-        font-size: 16px;
         background: url('../static/images/background.webp') no-repeat center center fixed;
-        background-size: cover;
+        background-size: contain;
         overflow: hidden;
       }
-      .menu {
-        display: grid;
-        grid-gap: 10px;
-        grid-auto-rows: minmax(100px, auto);
-        grid-template-columns: repeat(5, 384px);
-        grid-template-rows: repeat(3, 360px);
-        grid-template-areas:
-          'biology biology  star . mathematics'
-          '. globe scientist chess mathematics'
-          ' physics physics scientist . .';
+      .container {
+        width: 1920px;
+        height: 1080px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        overflow: hidden;
+        padding: 0 auto;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+        width: 384px;
+      }
+      .first {
+        justify-content: space-around;
+      }
+      .second {
+        justify-content: flex-end;
+      }
+      .third {
+        justify-content: space-between;
+      }
+      .fourth {
+        justify-self: space-around;
+      }
+      .fifth {
+        justify-content: space-around;
+      }
+      .item {
+        flex: 0 1 auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+      img {
+        width: 100%;
       }
       .star {
-        width: 400px;
-        height: 400px;
-      }
-      #star {
-        grid-area: star;
-        align-self: center;
-        justify-self: center;
-      }
-      .mathematics {
-        width: 250px;
-        height: 292px;
-      }
-      #mathematics {
-        grid-area: mathematics;
-        align-self: center;
-        justify-self: start;
+        width: 300px;
+        height: 300px;
       }
       .biology {
         width: 380px;
         height: 315px;
       }
-      #biology {
-        grid-area: biology;
-        align-self: center;
-        justify-self: center;
-      }
-      .chess {
-        width: 380px;
-        height: 272px;
-      }
-      #chess {
-        grid-area: chess;
-        align-self: center;
-        justify-self: center;
-      }
-      .physics {
-        width: 400px;
-        height: 400px;
-      }
-
-      #physics {
-        grid-area: physics;
-        align-self: center;
-        justify-self: center;
-      }
       .globe {
         width: 260px;
         height: 270px;
       }
-      #globe {
-        grid-area: globe;
-        align-self: center;
-        justify-self: center;
+      .physics {
+        width: 300px;
+        height: 300px;
       }
-      /* .scientist {
-        width: 305px;
+      .chess {
+        padding-top: 125%;
+        width: 380px;
+        height: 272px;
+      }
+      .math {
+        width: 250px;
+        height: 292px;
+      }
+
+      .boy {
+        width: 300px;
+      }
+      .boy img {
         height: 555px;
-      } */
-      #scientist {
-        grid-area: scientist;
-        align-self: center;
-        justify-self: center;
+        width: 550px;
       }
     </style>
   </body>

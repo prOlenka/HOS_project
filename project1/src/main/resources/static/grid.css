@@ -1,0 +1,75 @@
+.menu {
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: repeat(5, 384px);
+  grid-template-rows: repeat(3, 360px);
+  grid-template-areas:
+    'biology biology  star . mathematics'
+    '. globe scientist chess mathematics'
+    ' physics physics scientist . .';
+}
+.star {
+  width: 400px;
+  height: 400px;
+}
+#star {
+  grid-area: star;
+  align-self: center;
+  justify-self: center;
+}
+.mathematics {
+  width: 250px;
+  height: 292px;
+}
+#mathematics {
+  grid-area: mathematics;
+  align-self: center;
+  justify-self: start;
+}
+.biology {
+  width: 380px;
+  height: 315px;
+}
+#biology {
+  grid-area: biology;
+  align-self: center;
+  justify-self: center;
+}
+.chess {
+  width: 380px;
+  height: 272px;
+}
+#chess {
+  grid-area: chess;
+  align-self: center;
+  justify-self: center;
+}
+.physics {
+  width: 400px;
+  height: 400px;
+}
+
+#physics {
+  grid-area: physics;
+  align-self: center;
+  justify-self: center;
+}
+.globe {
+  width: 260px;
+  height: 270px;
+}
+#globe {
+  grid-area: globe;
+  align-self: center;
+  justify-self: center;
+}
+/* .scientist {
+  width: 305px;
+  height: 555px;
+} */
+#scientist {
+  grid-area: scientist;
+  align-self: center;
+  justify-self: center;
+}
