@@ -6,29 +6,13 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=4096, height=2160, initial-scale=1.0" />
+      content="width=width-device, height=height-device, initial-scale=1.0" />
     <title></title>
   </head>
   <body>
     <nav
       th:fragment="menu"
       class="menu">
-      <a
-        href="/question_start/star"
-        id="star"
-        ><img
-          src="images/a-star.png"
-          alt="a star"
-          class="star"
-      /></a>
-      <a
-        href="/question_start/mathematics"
-        id="mathematics"
-        ><img
-          src="images/a-mathematik.png"
-          alt="a mathematik"
-          class="mathematics"
-      /></a>
       <a
         href="/question_start/biology"
         id="biology"
@@ -38,20 +22,12 @@
           class="biology"
       /></a>
       <a
-        href="/question_start/chess"
-        id="chess"
+        href="/question_start/star"
+        id="star"
         ><img
-          src="images/chess.png"
-          alt="chess"
-          class="chess"
-      /></a>
-      <a
-        href="/question_start/physics"
-        id="physics"
-        ><img
-          src="images/atom-physics.png"
-          alt="atom"
-          class="physics"
+          src="images/a-star.png"
+          alt="a star"
+          class="star"
       /></a>
       <a
         href="/question_start/globe"
@@ -69,34 +45,61 @@
           alt="scientist"
           class="scientist"
       /></a>
+      <a
+        href="/question_start/chess"
+        id="chess"
+        ><img
+          src="images/chess.png"
+          alt="chess"
+          class="chess"
+      /></a>
+      <a
+        href="/question_start/mathematics"
+        id="mathematics"
+        ><img
+          src="images/a-mathematik.png"
+          alt="a mathematics"
+          class="mathematics"
+      /></a>
+      <a
+        href="/question_start/physics"
+        id="physics"
+        ><img
+          src="images/atom-physics.png"
+          alt="atom"
+          class="physics"
+      /></a>
     </nav>
 
     <style>
-      :root {
+      /* :root {
         --width-const: calc(4096 / 1792);
         --height-const: calc(2160 / 1024);
-      }
+      } */
       body {
-        width: 4096px;
-        height: 2160px;
+        width: 100%;
+        height: 100%;
         background: url('images/background.webp') no-repeat center center fixed;
         background-size: cover;
         overflow: hidden;
       }
       .menu {
+        width: 100vw;
+        height: 100vh;
         display: grid;
         grid-gap: auto;
-        /* grid-auto-rows: minmax(auto, auto); */
-        grid-template-columns: repeat(7, 580px);
-        grid-template-rows: repeat(3, 720px);
+        grid-auto-rows: minmax(auto, auto);
+        grid-template-columns: repeat(5, 20%);
+        grid-template-rows: repeat(3, 33%);
         grid-template-areas:
-          '. biology .  star . . . '
-          '. . globe scientist chess . mathematics'
-          'physics . . scientist . . .';
+          'biology . star . mathematics  '
+          '. globe scientist chess .'
+          'physics . scientist . .';
       }
       .biology {
-        width: calc(var(--width-const) * 373px);
-        height: calc(var(--height-const) * 316px);
+        padding-top: 2vh;
+        width: 18vw;
+        height: 30vh;
       }
       #biology {
         grid-area: biology;
@@ -104,8 +107,8 @@
         justify-self: center;
       }
       .star {
-        width: calc(var(--width-const) * 410px);
-        height: calc(var(--height-const) * 400px);
+        width: 19vw;
+        height: 39vh;
       }
       #star {
         grid-area: star;
@@ -113,8 +116,9 @@
         justify-self: center;
       }
       .globe {
-        width: calc(var(--width-const) * 256px);
-        height: calc(var(--height-const) * 276px);
+        padding-top: 1vh;
+        width: 18vw;
+        height: 30vh;
       }
       #globe {
         grid-area: globe;
@@ -122,8 +126,9 @@
         justify-self: center;
       }
       .chess {
-        width: calc(var(--width-const) * 375px);
-        height: calc(var(--height-const) * 273px);
+        padding-top: 4vh;
+        width: 18vw;
+        height: 30vh;
       }
       #chess {
         grid-area: chess;
@@ -131,8 +136,9 @@
         justify-self: center;
       }
       .mathematics {
-        width: calc(var(--width-const) * 258px);
-        height: calc(var(--height-const) * 293px);
+        padding-top: 5vh;
+        width: 18vw;
+        height: 30vh;
       }
       #mathematics {
         grid-area: mathematics;
@@ -140,8 +146,8 @@
         justify-self: start;
       }
       .physics {
-        width: calc(var(--width-const) * 333px);
-        height: calc(var(--height-const) * 313px);
+        width: 18vw;
+        height: 30vh;
       }
       #physics {
         grid-area: physics;
@@ -149,8 +155,8 @@
         justify-self: center;
       }
       .scientist {
-        width: calc(var(--width-const) * 350px);
-        height: calc(var(--height-const) * 559px);
+        width: 27vw;
+        height: 66vh;
       }
       #scientist {
         grid-area: scientist;
