@@ -87,7 +87,7 @@
         width: 100vw;
         height: 100vh;
         display: grid;
-        grid-gap: auto;
+        grid-gap: 0;
         grid-auto-rows: minmax(auto, auto);
         grid-template-columns: repeat(5, 20%);
         grid-template-rows: repeat(3, 33%);
@@ -97,11 +97,12 @@
           'physics . scientist . .';
       }
       .biology {
-        padding-top: 2vh;
+
         width: 18vw;
         height: 30vh;
       }
       #biology {
+        margin-top: 6vh;
         grid-area: biology;
         align-self: center;
         justify-self: center;
@@ -116,31 +117,34 @@
         justify-self: center;
       }
       .globe {
-        padding-top: 1vh;
+
         width: 18vw;
         height: 30vh;
       }
       #globe {
+        margin-top: 1vh;
         grid-area: globe;
         align-self: center;
         justify-self: center;
       }
       .chess {
-        padding-top: 4vh;
+
         width: 18vw;
         height: 30vh;
       }
       #chess {
+        margin-top: 9vh;
         grid-area: chess;
         align-self: center;
         justify-self: center;
       }
       .mathematics {
-        padding-top: 5vh;
+
         width: 18vw;
         height: 30vh;
       }
       #mathematics {
+        margin-top: 15vh;
         grid-area: mathematics;
         align-self: center;
         justify-self: start;
