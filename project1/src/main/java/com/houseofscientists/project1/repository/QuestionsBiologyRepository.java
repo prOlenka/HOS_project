@@ -13,6 +13,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface QuestionsBiologyRepository extends JpaRepository<QuestionsBiology, Long> {
@@ -21,6 +22,8 @@ public interface QuestionsBiologyRepository extends JpaRepository<QuestionsBiolo
         @Modifying
         @Query("SELECT u FROM QuestionsBiology u WHERE u.id= ?1")
         List<QuestionsBiology> findById(@Param("main") int main);
+
+        List <QuestionsBiology> findTopByOrderByIdDesc();
 
 //        public static Questions getRandomQuestion(){
 //        Questions q = new Questions();

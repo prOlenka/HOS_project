@@ -14,7 +14,4 @@ public interface RegisterRepository extends JpaRepository<Register, BigInteger> 
 
         List<Register> findAllById(long l);
 
-//        @Modifying
-//        @Query("SELECT u FROM Register u WHERE u.id= ?1")
-//        List<Register> findById(@Param("main") int main);
 }
