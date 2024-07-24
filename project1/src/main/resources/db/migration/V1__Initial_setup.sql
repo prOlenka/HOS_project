@@ -1,50 +1,4 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 16.2
--- Dumped by pg_dump version 16.2
-
--- Started on 2024-04-16 11:41:47
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- TOC entry 4 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
---
-
-CREATE SCHEMA public;
-
-
-ALTER SCHEMA public OWNER TO pg_database_owner;
-
---
--- TOC entry 4948 (class 0 OID 0)
--- Dependencies: 4
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: pg_database_owner
---
-
-COMMENT ON SCHEMA public IS 'standard public schema';
-
-
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
---
--- TOC entry 216 (class 1259 OID 16653)
--- Name: answers_biology; Type: TABLE; Schema: public; Owner: postgres
---
+-- CREATE SCHEMA public;
 
 CREATE TABLE public.answers_biology (
     id integer NOT NULL,
@@ -52,14 +6,6 @@ CREATE TABLE public.answers_biology (
     answer character varying(100),
     right_answer integer
 );
-
-
-ALTER TABLE public.answers_biology OWNER TO postgres;
-
---
--- TOC entry 220 (class 1259 OID 16669)
--- Name: answers_geography; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE public.answers_geography (
     id integer NOT NULL,
@@ -69,63 +15,6 @@ CREATE TABLE public.answers_geography (
 );
 
 
-ALTER TABLE public.answers_geography OWNER TO postgres;
-
---
--- TOC entry 219 (class 1259 OID 16668)
--- Name: answers_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.answers_geography_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.answers_geography_id_seq OWNER TO postgres;
-
---
--- TOC entry 4949 (class 0 OID 0)
--- Dependencies: 219
--- Name: answers_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.answers_geography_id_seq OWNED BY public.answers_geography.id;
-
-
---
--- TOC entry 215 (class 1259 OID 16652)
--- Name: answers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.answers_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.answers_id_seq OWNER TO postgres;
-
---
--- TOC entry 4950 (class 0 OID 0)
--- Dependencies: 215
--- Name: answers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.answers_id_seq OWNED BY public.answers_biology.id;
-
-
---
--- TOC entry 223 (class 1259 OID 16689)
--- Name: answers_physics; Type: TABLE; Schema: public; Owner: postgres
---
-
 CREATE TABLE public.answers_physics (
     id integer NOT NULL,
     id_questions integer NOT NULL,
@@ -134,187 +23,11 @@ CREATE TABLE public.answers_physics (
 );
 
 
-ALTER TABLE public.answers_physics OWNER TO postgres;
-
---
--- TOC entry 224 (class 1259 OID 16692)
--- Name: answers_physics_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.answers_physics_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.answers_physics_id_seq OWNER TO postgres;
-
---
--- TOC entry 4951 (class 0 OID 0)
--- Dependencies: 224
--- Name: answers_physics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.answers_physics_id_seq OWNED BY public.answers_physics.id;
-
-
---
--- TOC entry 232 (class 1259 OID 16777)
--- Name: currency; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.currency (
-    short_name character varying(3),
-    full_name character varying(50)
-);
-
-
-ALTER TABLE public.currency OWNER TO postgres;
-
---
--- TOC entry 231 (class 1259 OID 16774)
--- Name: currency_courses; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.currency_courses (
-    date date,
-    currency_from character varying(10),
-    currency_to character varying(10),
-    currency_close numeric(19,2),
-    currency_previous_close numeric(19,2)
-);
-
-
-ALTER TABLE public.currency_courses OWNER TO postgres;
-
---
--- TOC entry 229 (class 1259 OID 16764)
--- Name: databasechangelog; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.databasechangelog (
-    id character varying(255) NOT NULL,
-    author character varying(255) NOT NULL,
-    filename character varying(255) NOT NULL,
-    dateexecuted timestamp without time zone NOT NULL,
-    orderexecuted integer NOT NULL,
-    exectype character varying(10) NOT NULL,
-    md5sum character varying(35),
-    description character varying(255),
-    comments character varying(255),
-    tag character varying(255),
-    liquibase character varying(20),
-    contexts character varying(255),
-    labels character varying(255),
-    deployment_id character varying(10)
-);
-
-
-ALTER TABLE public.databasechangelog OWNER TO postgres;
-
---
--- TOC entry 230 (class 1259 OID 16769)
--- Name: databasechangeloglock; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.databasechangeloglock (
-    id integer NOT NULL,
-    locked boolean NOT NULL,
-    lockgranted timestamp without time zone,
-    lockedby character varying(255)
-);
-
-
-ALTER TABLE public.databasechangeloglock OWNER TO postgres;
-
---
--- TOC entry 236 (class 1259 OID 16788)
--- Name: limits; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.limits (
-    id integer NOT NULL,
-    user_account character varying(10),
-    account_limit numeric(19,2),
-    balance numeric(19,2),
-    category character varying(255),
-    setting_date date
-);
-
-
-ALTER TABLE public.limits OWNER TO postgres;
-
---
--- TOC entry 235 (class 1259 OID 16787)
--- Name: limits_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.limits_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.limits_id_seq OWNER TO postgres;
-
---
--- TOC entry 4952 (class 0 OID 0)
--- Dependencies: 235
--- Name: limits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.limits_id_seq OWNED BY public.limits.id;
-
-
---
--- TOC entry 225 (class 1259 OID 16702)
--- Name: questions_physics; Type: TABLE; Schema: public; Owner: postgres
---
-
 CREATE TABLE public.questions_physics (
     id integer NOT NULL,
     question character(500) NOT NULL,
     explanation character(500) NOT NULL
 );
-
-
-ALTER TABLE public.questions_physics OWNER TO postgres;
-
---
--- TOC entry 226 (class 1259 OID 16705)
--- Name: question_physics_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.question_physics_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.question_physics_id_seq OWNER TO postgres;
-
---
--- TOC entry 4953 (class 0 OID 0)
--- Dependencies: 226
--- Name: question_physics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.question_physics_id_seq OWNED BY public.questions_physics.id;
-
-
---
--- TOC entry 218 (class 1259 OID 16660)
--- Name: questions_biology; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE public.questions_biology (
     id integer NOT NULL,
@@ -323,76 +36,11 @@ CREATE TABLE public.questions_biology (
 );
 
 
-ALTER TABLE public.questions_biology OWNER TO postgres;
-
---
--- TOC entry 222 (class 1259 OID 16679)
--- Name: questions_geography; Type: TABLE; Schema: public; Owner: postgres
---
-
 CREATE TABLE public.questions_geography (
     id integer NOT NULL,
     question character(500) NOT NULL,
     explanation character(500) NOT NULL
 );
-
-
-ALTER TABLE public.questions_geography OWNER TO postgres;
-
---
--- TOC entry 221 (class 1259 OID 16678)
--- Name: questions_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.questions_geography_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.questions_geography_id_seq OWNER TO postgres;
-
---
--- TOC entry 4954 (class 0 OID 0)
--- Dependencies: 221
--- Name: questions_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.questions_geography_id_seq OWNED BY public.questions_geography.id;
-
-
---
--- TOC entry 217 (class 1259 OID 16659)
--- Name: questions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.questions_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.questions_id_seq OWNER TO postgres;
-
---
--- TOC entry 4955 (class 0 OID 0)
--- Dependencies: 217
--- Name: questions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.questions_id_seq OWNED BY public.questions_biology.id;
-
-
---
--- TOC entry 228 (class 1259 OID 16716)
--- Name: register; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE public.register (
     id integer NOT NULL,
@@ -400,156 +48,6 @@ CREATE TABLE public.register (
     picture character(500),
     title character(500) NOT NULL
 );
-
-
-ALTER TABLE public.register OWNER TO postgres;
-
---
--- TOC entry 227 (class 1259 OID 16715)
--- Name: repository_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.repository_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.repository_id_seq OWNER TO postgres;
-
---
--- TOC entry 4956 (class 0 OID 0)
--- Dependencies: 227
--- Name: repository_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.repository_id_seq OWNED BY public.register.id;
-
-
---
--- TOC entry 234 (class 1259 OID 16781)
--- Name: transactions; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.transactions (
-    id integer NOT NULL,
-    account_from character varying(10),
-    account_to character varying(10),
-    currency_short_name character varying(3),
-    datetime timestamp without time zone,
-    expense_category character varying(255),
-    limit_exceeded boolean,
-    sum numeric(19,2)
-);
-
-
-ALTER TABLE public.transactions OWNER TO postgres;
-
---
--- TOC entry 233 (class 1259 OID 16780)
--- Name: transactions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.transactions_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.transactions_id_seq OWNER TO postgres;
-
---
--- TOC entry 4957 (class 0 OID 0)
--- Dependencies: 233
--- Name: transactions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.transactions_id_seq OWNED BY public.transactions.id;
-
-
---
--- TOC entry 4744 (class 2604 OID 16794)
--- Name: answers_biology id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.answers_biology ALTER COLUMN id SET DEFAULT nextval('public.answers_id_seq'::regclass);
-
-
---
--- TOC entry 4746 (class 2604 OID 16795)
--- Name: answers_geography id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.answers_geography ALTER COLUMN id SET DEFAULT nextval('public.answers_geography_id_seq'::regclass);
-
-
---
--- TOC entry 4748 (class 2604 OID 16796)
--- Name: answers_physics id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.answers_physics ALTER COLUMN id SET DEFAULT nextval('public.answers_physics_id_seq'::regclass);
-
-
---
--- TOC entry 4752 (class 2604 OID 16797)
--- Name: limits id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.limits ALTER COLUMN id SET DEFAULT nextval('public.limits_id_seq'::regclass);
-
-
---
--- TOC entry 4745 (class 2604 OID 16798)
--- Name: questions_biology id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.questions_biology ALTER COLUMN id SET DEFAULT nextval('public.questions_id_seq'::regclass);
-
-
---
--- TOC entry 4747 (class 2604 OID 16799)
--- Name: questions_geography id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.questions_geography ALTER COLUMN id SET DEFAULT nextval('public.questions_geography_id_seq'::regclass);
-
-
---
--- TOC entry 4749 (class 2604 OID 16800)
--- Name: questions_physics id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.questions_physics ALTER COLUMN id SET DEFAULT nextval('public.question_physics_id_seq'::regclass);
-
-
---
--- TOC entry 4750 (class 2604 OID 16801)
--- Name: register id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.register ALTER COLUMN id SET DEFAULT nextval('public.repository_id_seq'::regclass);
-
-
---
--- TOC entry 4751 (class 2604 OID 16802)
--- Name: transactions id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.transactions ALTER COLUMN id SET DEFAULT nextval('public.transactions_id_seq'::regclass);
-
-
---
--- TOC entry 4922 (class 0 OID 16653)
--- Dependencies: 216
--- Data for Name: answers_biology; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
 INSERT INTO public.answers_biology (id, id_questions, answer, right_answer) VALUES (1, 1, 'атмосфера земли излучает голубой свет при взаимодействии с излучением солнца', 0);
 INSERT INTO public.answers_biology (id, id_questions, answer, right_answer) VALUES (2, 1, 'мы видим суммарный свет огромного количества голубых звёзд', 0);
@@ -599,11 +97,6 @@ INSERT INTO public.answers_biology (id, id_questions, answer, right_answer) VALU
 INSERT INTO public.answers_biology (id, id_questions, answer, right_answer) VALUES (44, 12, 'Кузнечик', 0);
 
 
---
--- TOC entry 4926 (class 0 OID 16669)
--- Dependencies: 220
--- Data for Name: answers_geography; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
 INSERT INTO public.answers_geography (id, id_questions, answer, right_answer) VALUES (1, 1, 'Можно                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ', 1);
 INSERT INTO public.answers_geography (id, id_questions, answer, right_answer) VALUES (2, 1, 'Нельзя                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ', 0);
@@ -665,12 +158,6 @@ INSERT INTO public.answers_geography (id, id_questions, answer, right_answer) VA
 INSERT INTO public.answers_geography (id, id_questions, answer, right_answer) VALUES (58, 15, 'Северный Ледовитый                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ', 0);
 
 
---
--- TOC entry 4929 (class 0 OID 16689)
--- Dependencies: 223
--- Data for Name: answers_physics; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
 INSERT INTO public.answers_physics (id, id_questions, answer, right_answer) VALUES (1, 1, 'Процесс круговорота воды                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ', 1);
 INSERT INTO public.answers_physics (id, id_questions, answer, right_answer) VALUES (2, 1, 'Из-за способности воды утолять жажду                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', 0);
 INSERT INTO public.answers_physics (id, id_questions, answer, right_answer) VALUES (3, 1, 'Из-за колличества рук и морей в мире                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', 0);
@@ -704,56 +191,6 @@ INSERT INTO public.answers_physics (id, id_questions, answer, right_answer) VALU
 INSERT INTO public.answers_physics (id, id_questions, answer, right_answer) VALUES (32, 8, 'Для того, чтобы был свист                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ', 0);
 INSERT INTO public.answers_physics (id, id_questions, answer, right_answer) VALUES (33, 8, 'Чтобы крышка оставалась на месте                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ', 0);
 
-
---
--- TOC entry 4938 (class 0 OID 16777)
--- Dependencies: 232
--- Data for Name: currency; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- TOC entry 4937 (class 0 OID 16774)
--- Dependencies: 231
--- Data for Name: currency_courses; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- TOC entry 4935 (class 0 OID 16764)
--- Dependencies: 229
--- Data for Name: databasechangelog; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.databasechangelog (id, author, filename, dateexecuted, orderexecuted, exectype, md5sum, description, comments, tag, liquibase, contexts, labels, deployment_id) VALUES ('raw', 'includeAll', 'db/changelog/db.changelog-1.0.sql', '2024-04-05 15:46:02.213483', 1, 'EXECUTED', '9:6d5521f74c10f09a2011f81b83193d0f', 'sql', '', NULL, '4.27.0', NULL, NULL, '2321162171');
-INSERT INTO public.databasechangelog (id, author, filename, dateexecuted, orderexecuted, exectype, md5sum, description, comments, tag, liquibase, contexts, labels, deployment_id) VALUES ('raw', 'includeAll', 'db/changelog/db.changelog-1.0.sql', '2024-04-05 15:46:02.213483', 1, 'EXECUTED', '9:6d5521f74c10f09a2011f81b83193d0f', 'sql', '', NULL, '4.27.0', NULL, NULL, '2321162171');
-
-
---
--- TOC entry 4936 (class 0 OID 16769)
--- Dependencies: 230
--- Data for Name: databasechangeloglock; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.databasechangeloglock (id, locked, lockgranted, lockedby) VALUES (1, false, NULL, NULL);
-
-
---
--- TOC entry 4942 (class 0 OID 16788)
--- Dependencies: 236
--- Data for Name: limits; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- TOC entry 4924 (class 0 OID 16660)
--- Dependencies: 218
--- Data for Name: questions_biology; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
 INSERT INTO public.questions_biology (id, question, explanation) VALUES (1, 'Почему небо голубое?', 'Оптический диапазон человеческого глаза может достигнуть лишь синего спектра волны света. Свет с короткой длиной волны рассеивается в большей степени. А самая короткая длина волны для глаза — это синяя, поэтому синий свет заполняет все небо и мы видим его голубым.');
 INSERT INTO public.questions_biology (id, question, explanation) VALUES (2, 'Почему солнце на горизонте и в зените имеет разный цвет?', 'Солнечный свет состоит из волн, которые соответствуют  разным цветам (спектр света). Когда солнце находится возле горизонта, то свет,  претерпевая поглощение и рассеяние, проходит больший путь в атмосфере земли. При этом волны соответствующие  синему цвету поглощаются и рассеиваются больше чем волны соответствующие красному цвету. Поэтому до наблюдателя доходит в основном красная составляющая спектра и солнце кажется красным.');
 INSERT INTO public.questions_biology (id, question, explanation) VALUES (8, 'Китовая акула проглатывает человека целиком?', 'Китовая акула питается только планктоном');
@@ -767,12 +204,6 @@ INSERT INTO public.questions_biology (id, question, explanation) VALUES (10, 'К
 INSERT INTO public.questions_biology (id, question, explanation) VALUES (11, 'У какого животного самый длинный язык?', 'Абсолютный рекорд, согласно книге Гиннеса, принадлежит гигантскому муравьеду: есть свидетельства, как обитатель южноамериканских саванн «показывал» язык длиной 61 см.');
 INSERT INTO public.questions_biology (id, question, explanation) VALUES (12, 'Какое насекомое может поднять груз в 10 раз превышающий его собственный вес?', 'Муравьи давно известны как выдающиеся тяжелоатлеты животного мира. Способности у разных видов могут отличаться, однако некоторые могут поднимать груз, масса которого от 10 до 50 раз превышает массу тела');
 
-
---
--- TOC entry 4928 (class 0 OID 16679)
--- Dependencies: 222
--- Data for Name: questions_geography; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
 INSERT INTO public.questions_geography (id, question, explanation) VALUES (1, 'Можно ли в Европейской части России встретить «Кобру» длиной 324 
 километра?                                                                                                                                                                                                                                                                                                                                                                                                                                        ', 'Кобра - это река, правый приток реки Вятки.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ');
@@ -797,13 +228,6 @@ INSERT INTO public.questions_geography (id, question, explanation) VALUES (6, '�
 INSERT INTO public.questions_geography (id, question, explanation) VALUES (10, 'Где живут белые медведи?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ', 'Арктика — единый физико-географический район Земли, примыкающий к Северному полюсу и включающий окраины материков Евразии и Северной Америки, почти весь Северный Ледовитый океан с островами (кроме прибрежных островов Норвегии), а также прилегающие части Атлантического и Тихого океанов.                                                                                                                                                                                                                      ');
 INSERT INTO public.questions_geography (id, question, explanation) VALUES (12, 'В каком государстве изобрели компас?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', 'Китай, официальное название — Кита́йская Наро́дная Респу́блика (сокр. КНР) — государство в Восточной Азии. Занимает 4-е место в мире по территории среди государств (9 598 962 км2), уступая России, Канаде и США, а по численности населения — 1 411 750 000 жителей (без Тайваня, Гонконга и Макао) — второе после Индии. Большинство населения — этнические китайцы.                                                                                                                                             ');
 
-
---
--- TOC entry 4931 (class 0 OID 16702)
--- Dependencies: 225
--- Data for Name: questions_physics; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
 INSERT INTO public.questions_physics (id, question, explanation) VALUES (1, 'Почему воду называют «вечной страницей» или «неутомимая путешественница»?                                                                                                                                                                                                                                                                                                                                                                                                                                           ', 'Круговорот воды происходит под влиянием солнечной радиации и сил тяжести. Солнце нагревает воду в океанах и морях, и она испаряется, преобразуясь в водяной пар. Параллельный процесс происходит и на суше: вода испаряется с нагретой Солнцем поверхности Земли или испаряется растениями в результате транспирации.                                                                                                                                                                                               ');
 INSERT INTO public.questions_physics (id, question, explanation) VALUES (2, 'Почему сырое белье, развешенное на балконе, в теплую погоду сохнет
 быстрее, чем в холодную?                                                                                                                                                                                                                                                                                                                                                                                                                         ', 'Чем теплее испаряющаяся жидкость, тем быстрее
@@ -815,12 +239,6 @@ INSERT INTO public.questions_physics (id, question, explanation) VALUES (6, 'П�
 INSERT INTO public.questions_physics (id, question, explanation) VALUES (7, 'В чем сходство и в чем различие между туманом и облаком?                                                                                                                                                                                                                                                                                                                                                                                                                                                            ', 'И туман, и облако состоят из мельчайших капелек воды. Различие заключается в том, что туман стелется по земле, а облако образуется высоко над землей                                                                                                                                                                                                                                                                                                                                                                ');
 INSERT INTO public.questions_physics (id, question, explanation) VALUES (8, 'Зачем в крышке чайника делают небольшое отверстие?                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ', 'Для выхода лишнего пара, а также вода, превращаясь в пар увеличивается в объеме                                                                                                                                                                                                                                                                                                                                                                                                                                     ');
 
-
---
--- TOC entry 4934 (class 0 OID 16716)
--- Dependencies: 228
--- Data for Name: register; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
 INSERT INTO public.register (id, description, picture, title) VALUES (2, 'назван по имени немецкого физика Антона Обербека. Маятник представляет собой маховик, насаженный по центру на вал, к которому прикреплена нить, на втором конце которой закреплен груз. Вы вращаете маховик, нить наматывается на вал, происходит поднятие груза. При отпускании маховика груз начинает опускаться под действием силы тяжести, раскручивая вал и насаженный на нем маховик. Раскрученный маховик, вращаясь по инерции, начинает наматывать нить на ось и поднимает груз вверх. В верхней точке груз и маховик останавливаются и все начинается сначала.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ', NULL, 'МАЯТНИК ОБЕРБЕКА                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ');
 INSERT INTO public.register (id, description, picture, title) VALUES (3, 'представляет собой физический маятник, т.е. груз, закрепленный на нижнем конце стержня. Верхний конец закреплен на вращающемся валу. На него же насажен маховик.
@@ -952,230 +370,3 @@ INSERT INTO public.register (id, description, picture, title) VALUES (1, 'Физ
 Основные характеристики маятника:
 Амплитуда колебаний – это максимальное отклонение от положения равновесия
 Частота колебаний –число колебаний в единицу времени.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ', NULL, 'ФИЗИЧЕСКИЙ МАЯТНИК                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ');
-
-
---
--- TOC entry 4940 (class 0 OID 16781)
--- Dependencies: 234
--- Data for Name: transactions; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- TOC entry 4958 (class 0 OID 0)
--- Dependencies: 219
--- Name: answers_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.answers_geography_id_seq', 58, true);
-
-
---
--- TOC entry 4959 (class 0 OID 0)
--- Dependencies: 215
--- Name: answers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.answers_id_seq', 44, true);
-
-
---
--- TOC entry 4960 (class 0 OID 0)
--- Dependencies: 224
--- Name: answers_physics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.answers_physics_id_seq', 33, true);
-
-
---
--- TOC entry 4961 (class 0 OID 0)
--- Dependencies: 235
--- Name: limits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.limits_id_seq', 1, false);
-
-
---
--- TOC entry 4962 (class 0 OID 0)
--- Dependencies: 226
--- Name: question_physics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.question_physics_id_seq', 8, true);
-
-
---
--- TOC entry 4963 (class 0 OID 0)
--- Dependencies: 221
--- Name: questions_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.questions_geography_id_seq', 16, true);
-
-
---
--- TOC entry 4964 (class 0 OID 0)
--- Dependencies: 217
--- Name: questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.questions_id_seq', 12, true);
-
-
---
--- TOC entry 4965 (class 0 OID 0)
--- Dependencies: 227
--- Name: repository_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.repository_id_seq', 75, true);
-
-
---
--- TOC entry 4966 (class 0 OID 0)
--- Dependencies: 233
--- Name: transactions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.transactions_id_seq', 1, false);
-
-
---
--- TOC entry 4759 (class 2606 OID 16676)
--- Name: answers_geography answers_geography_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.answers_geography
-    ADD CONSTRAINT answers_geography_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 4765 (class 2606 OID 16701)
--- Name: answers_physics answers_physics_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.answers_physics
-    ADD CONSTRAINT answers_physics_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 4754 (class 2606 OID 16658)
--- Name: answers_biology answers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.answers_biology
-    ADD CONSTRAINT answers_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 4773 (class 2606 OID 16773)
--- Name: databasechangeloglock databasechangeloglock_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.databasechangeloglock
-    ADD CONSTRAINT databasechangeloglock_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 4777 (class 2606 OID 16793)
--- Name: limits limits_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.limits
-    ADD CONSTRAINT limits_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 4768 (class 2606 OID 16714)
--- Name: questions_physics question_physics_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.questions_physics
-    ADD CONSTRAINT question_physics_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 4762 (class 2606 OID 16686)
--- Name: questions_geography questions_geography_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.questions_geography
-    ADD CONSTRAINT questions_geography_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 4756 (class 2606 OID 16665)
--- Name: questions_biology questions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.questions_biology
-    ADD CONSTRAINT questions_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 4771 (class 2606 OID 16723)
--- Name: register repository_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.register
-    ADD CONSTRAINT repository_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 4775 (class 2606 OID 16786)
--- Name: transactions transactions_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.transactions
-    ADD CONSTRAINT transactions_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 4757 (class 1259 OID 16677)
--- Name: answers_geography_id_uindex; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE UNIQUE INDEX answers_geography_id_uindex ON public.answers_geography USING btree (id);
-
-
---
--- TOC entry 4763 (class 1259 OID 16699)
--- Name: answers_physics_id_uindex; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE UNIQUE INDEX answers_physics_id_uindex ON public.answers_physics USING btree (id);
-
-
---
--- TOC entry 4766 (class 1259 OID 16712)
--- Name: question_physics_id_uindex; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE UNIQUE INDEX question_physics_id_uindex ON public.questions_physics USING btree (id);
-
-
---
--- TOC entry 4760 (class 1259 OID 16687)
--- Name: questions_geography_id_uindex; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE UNIQUE INDEX questions_geography_id_uindex ON public.questions_geography USING btree (id);
-
-
---
--- TOC entry 4769 (class 1259 OID 16724)
--- Name: repository_id_uindex; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE UNIQUE INDEX repository_id_uindex ON public.register USING btree (id);
-
-
--- Completed on 2024-04-16 11:41:47
-
---
--- PostgreSQL database dump complete
---
-
