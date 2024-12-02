@@ -64,10 +64,6 @@
   align-self: center;
   justify-self: center;
 }
-/* .scientist {
-  width: 305px;
-  height: 555px;
-} */
 #scientist {
   grid-area: scientist;
   align-self: center;

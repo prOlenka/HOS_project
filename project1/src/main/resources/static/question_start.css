@@ -2,34 +2,61 @@ body {
   font-size: 16px;
   background-image: url("images/background.jpg");
   background-size: cover;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh; /* Используем всю высоту экрана */
 }
+
 .container {
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  height: 100%;
 }
+
 .spacer {
   padding: 2.5rem;
 }
+
 .question {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.question h1 {
-  font-size: 1.2rem;
+
+.question-text {
+  font-size: 5rem; /* Увеличиваем размер текста */
+  font-weight: bold; /* Жирный текст */
+  text-align: center; /* Выравниваем текст по центру */
+  margin-bottom: 3rem; /* Добавляем отступ снизу */
 }
+
 .buttons {
-  padding-top: 16rem;
-  display: inline;
-  flex-flow: column wrap;
+  display: grid; /* Используем grid для выравнивания кнопок */
+  grid-template-columns: repeat(2, 1fr); /* Два столбца */
+  gap: 1rem; /* Отступы между кнопками */
+  width: 100%;
+  padding-top: 2rem;
+  height: 30%; /* Устанавливаем высоту блока с кнопками */
 }
+
 .button {
-  padding: 2rem;
+  width: 100%; /* Заполняет всю ширину ячейки */
+  padding: 1rem 2rem;
   color: aliceblue;
   background-color: #3a9319;
-  font-size: 1rem;
+  font-size: 1.5rem; /* Увеличиваем шрифт кнопок */
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  min-height: 100%; /* Заполняем всю высоту доступного пространства */
+}
+
+.button:hover {
+  background-color: #348b14; /* Немного меняем цвет при наведении */
 }

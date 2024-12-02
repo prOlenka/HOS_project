@@ -1,20 +1,130 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link
-            rel="stylesheet"
-            href="../question_start.css" />
-    <title>Реестр</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 15px;
+            background-color: #fff;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .caption {
+            margin-top: 15px;
+            font-size: 1.4rem;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .slider-control {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .left-control {
+            left: 0;
+        }
+
+        .right-control {
+            right: 0;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #3a9319;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background-color: #348b14;
+        }
+    </style>
 </head>
 <body>
-<div>
-<!--    <th:block th:value="description"></th:block>-->
-    <th:block th:each="dList : ${description}">
-        <h1 align="center" th:text="${dList.title}">..</h1>
-        <span><h3 th:text="${dList.description}">..</h3></span>
 
+<div class="slider-container">
+    <div th:each="item : ${items}" class="slide">
+        <img th:src="${item.imageUrl}" alt="Image">
+        <div class="caption" th:text="${item.description}"></div>
+    </div>
+
+    <div class="slider-control left-control" onclick="changeSlide(-1)"></div>
+    <div class="slider-control right-control" onclick="changeSlide(1)"></div>
 </div>
+
+<!-- Кнопка возврата -->
+<a href="/" class="back-button">Вернуться на главный экран</a>
+
+<script>
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => slide.classList.remove('active'));
+
+        if (index >= slides.length) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = slides.length - 1;
+        } else {
+            currentSlide = index;
+        }
+
+        slides[currentSlide].classList.add('active');
+    }
+
+    function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+    }
+
+    // Показываем первый слайд при загрузке
+    showSlide(currentSlide);
+</script>
+
 </body>
 </html>

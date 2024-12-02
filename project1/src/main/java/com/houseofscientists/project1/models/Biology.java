@@ -1,0 +1,36 @@
+package com.houseofscientists.project1.models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Entity
+@Data
+@NoArgsConstructor
+public class Biology {
+    @Id
+    @Getter
+    @Setter
+    private Integer id;
+    private String question;
+    private String explanation;
+    private String rightAnswer;
+    private String s1;
+    private String s2;
+    private String s3;
+
+
+    public Biology(Integer id, String question, String explanation, String rightAnswer, String s1, String s2, String s3) {
+        this.id = id;
+        this.question = question;
+        this.explanation = explanation;
+        this.rightAnswer = rightAnswer;
+        this.s1 = s1;
+        this.s2 = s2;
+        this.s3 = s3;
+    }
+}
