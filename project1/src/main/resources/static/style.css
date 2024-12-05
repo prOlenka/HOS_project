@@ -6,7 +6,6 @@ body{
   padding: 2em 2em 2em 2em;
   width: 90rem;
   height: auto;
-  /*position: block;*/
   margin: auto;
   left: 0;
   top: 0;
@@ -27,7 +26,6 @@ body{
 .buttons{
   overflow: auto;
   resize: both;
-  /*comment above if you want to remove resizing*/
   display: flex;
   height: 20vh;
   width: 90vw;

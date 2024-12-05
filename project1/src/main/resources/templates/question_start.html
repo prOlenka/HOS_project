@@ -5,9 +5,37 @@
   <meta name="viewport" content="min-width=device-width, min-height=device-height, initial-scale=1.0" />
   <link rel="stylesheet" href="../question_start.css" />
   <title>Вопросы</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
+    function checkAnswer(selectedAnswer) {
+      $.post('/check_answer', { selectedAnswer: selectedAnswer }, function(response) {
+        if (response.trim() === 'right_answer') {  // Проверка на точное совпадение
+          window.location.href = '/right_answer';  // Выполняем редирект
+        } else {
+          showError('Неправильный ответ, попробуйте еще раз.');
+          $('#question-container').html($(response).find('#question-container').html());
+        }
+      });
+    }
+
     function showError(message) {
-      alert(message); // Всплывающее окно с сообщением об ошибке
+      const errorDiv = document.createElement('div');
+      errorDiv.innerText = message;
+      errorDiv.style.position = 'absolute';
+      errorDiv.style.top = '10px';
+      errorDiv.style.left = '50%';
+      errorDiv.style.transform = 'translateX(-50%)';
+      errorDiv.style.backgroundColor = 'red';
+      errorDiv.style.color = 'white';
+      errorDiv.style.padding = '10px';
+      errorDiv.style.borderRadius = '5px';
+      errorDiv.style.fontSize = '16px';
+      errorDiv.style.zIndex = '100';
+
+      document.body.appendChild(errorDiv);
+      setTimeout(() => {
+        document.body.removeChild(errorDiv);
+      }, 2000);
     }
   </script>
   <style>
@@ -36,7 +64,7 @@
 <main>
   <div class="container">
     <div class="spacer"></div>
-    <div class="question">
+    <div class="question" id="question-container">
       <th:block th:each="qList : ${que}">
         <h1 th:text="${qList}" class="question-text" style="text-shadow: 1px 1px white"></h1>
       </th:block>
@@ -44,7 +72,7 @@
     <div class="spacer"></div>
     <div class="buttons">
       <div th:each="answer : ${ans}">
-        <input type="button" class="button" th:value="${answer}" style="text-shadow: 1px 1px black" />
+        <input type="button" class="button" th:value="${answer}" th:data-answer="${answer}" onclick="checkAnswer(this.getAttribute('data-answer'))" style="text-shadow: 1px 1px black" />
       </div>
     </div>
     <div class="spacer"></div>

@@ -4,18 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../styles.css">
   <title>Правильный ответ</title>
 </head>
+
 <body>
 <h1>Поздравляем! Это правильный ответ.</h1>
-<p th:text="${explanation}">Здесь появится объяснение.</p>
-</body>
+<h3 th:text="${explanation}">Здесь появится объяснение.</h3>
+
 <main>
-  <form class="form buttons">
-    <div class="column first">
-      <input type="button" class="button" value="Продолжить квест">
-        </div>
-  </form>
+  <a th:href="@{/question_start/{model}(model=${model})}" class="return-button">Продолжить квест</a>
 </main>
+
+</body>
 </html>
