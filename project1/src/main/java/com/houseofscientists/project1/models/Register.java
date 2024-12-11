@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Register {
-    public List <RegisterItem> addToRegister(){
+    public List<RegisterItem> addToRegister(){
         List<RegisterItem> items = new ArrayList<>();
 
         items.add(new RegisterItem("Image 1", "/images/register/0_MAL5924.jpg", "This is the first image"));

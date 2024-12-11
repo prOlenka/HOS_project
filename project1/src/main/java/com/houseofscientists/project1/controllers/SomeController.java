@@ -3,21 +3,25 @@ package com.houseofscientists.project1.controllers;
 import com.houseofscientists.project1.database.*;
 import com.houseofscientists.project1.models.*;
 import com.houseofscientists.project1.models.Math;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 import java.util.List;
 
-@RequestMapping
-@Controller
-public class SomeController {
+public class SomeController extends Application {
 
     private final AstronomyDatabase astronomyDatabase;
     private final BiologyDatabase biologyDatabase;
     private final GeographyDatabase geographyDatabase;
     private final MathDatabase mathDatabase;
     private final PhysicsDatabase physicsDatabase;
+
+    String rightAnswer;
+    String explanation;
+    String model;
 
     public SomeController(
             AstronomyDatabase astronomyDatabase,
@@ -32,121 +36,169 @@ public class SomeController {
         this.mathDatabase = mathDatabase;
         this.physicsDatabase = physicsDatabase;
     }
-    String rightAnswer;
-    String explanation;
-    String model;
 
-    @RequestMapping("/")
-    public String start() {
-        return "start_page";
+    public static void main(String[] args) {
+        launch(args);
     }
 
-    @GetMapping("/question_start/astronomy")
-    public String astronomy(Model page) {
-        Astronomy question = astronomyDatabase.getRandomQuestion();  // Получаем случайный вопрос
+    @Override
+    public void start(Stage primaryStage) {
+        // Инициализация окна
+        primaryStage.setTitle("Science Quiz");
+
+        // Создание начальной страницы
+        VBox root = new VBox(10);
+        Button startButton = new Button("Start");
+        startButton.setOnAction(e -> showAstronomyQuestion(primaryStage));
+
+        root.getChildren().add(startButton);
+        Scene scene = new Scene(root, 400, 300);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+
+    private void showAstronomyQuestion(Stage stage) {
+        Astronomy question = astronomyDatabase.getRandomQuestion();
         List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
         explanation = question.getExplanation();
         model = "astronomy";
 
-        page.addAttribute("que", question.getQuestion());  // Вопрос
-        page.addAttribute("ans", answers);  // Ответы
+        VBox questionBox = new VBox(10);
+        Label questionLabel = new Label(question.getQuestion());
+        ListView<String> answerList = new ListView<>();
+        answerList.getItems().addAll(answers);
+        Button checkButton = new Button("Check Answer");
 
-        return "question_start";
+        checkButton.setOnAction(e -> checkAnswer(answerList.getSelectionModel().getSelectedItem(), stage));
+
+        questionBox.getChildren().addAll(questionLabel, answerList, checkButton);
+        Scene questionScene = new Scene(questionBox, 400, 300);
+        stage.setScene(questionScene);
     }
 
-    @GetMapping("/question_start/biology")
-    public String biology(Model page) {
-        Biology question = biologyDatabase.getRandomQuestion();  // Получаем случайный вопрос
+    private void showBiologyQuestion(Stage stage) {
+        Biology question = biologyDatabase.getRandomQuestion();
         List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
         explanation = question.getExplanation();
         model = "biology";
 
-        page.addAttribute("que", question.getQuestion());  // Вопрос
-        page.addAttribute("ans", answers);  // Ответы
+        VBox questionBox = new VBox(10);
+        Label questionLabel = new Label(question.getQuestion());
+        ListView<String> answerList = new ListView<>();
+        answerList.getItems().addAll(answers);
+        Button checkButton = new Button("Check Answer");
 
-        return "question_start";  // Возвращаем страницу с вопросом
+        checkButton.setOnAction(e -> checkAnswer(answerList.getSelectionModel().getSelectedItem(), stage));
+
+        questionBox.getChildren().addAll(questionLabel, answerList, checkButton);
+        Scene questionScene = new Scene(questionBox, 400, 300);
+        stage.setScene(questionScene);
     }
 
-    @GetMapping("/question_start/geography")
-    public String geography(Model page) {
-        Geography question = geographyDatabase.getRandomQuestion();  // Получаем случайный вопрос
+    private void showGeographyQuestion(Stage stage) {
+        Geography question = geographyDatabase.getRandomQuestion();
         List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
         explanation = question.getExplanation();
         model = "geography";
 
-        page.addAttribute("que", question.getQuestion());  // Вопрос
-        page.addAttribute("ans", answers);  // Ответы
+        VBox questionBox = new VBox(10);
+        Label questionLabel = new Label(question.getQuestion());
+        ListView<String> answerList = new ListView<>();
+        answerList.getItems().addAll(answers);
+        Button checkButton = new Button("Check Answer");
 
-        return "question_start";  // Возвращаем страницу с вопросом
+        checkButton.setOnAction(e -> checkAnswer(answerList.getSelectionModel().getSelectedItem(), stage));
+
+        questionBox.getChildren().addAll(questionLabel, answerList, checkButton);
+        Scene questionScene = new Scene(questionBox, 400, 300);
+        stage.setScene(questionScene);
     }
 
-    @GetMapping("/question_start/mathematics")
-    public String mathematics(Model page) {
-        Math question = mathDatabase.getRandomQuestion();  // Получаем случайный вопрос
+    private void showMathematicsQuestion(Stage stage) {
+        Math question = mathDatabase.getRandomQuestion();
         List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
+        explanation = question.getExplanation();
         model = "mathematics";
 
-        page.addAttribute("que", question.getQuestion());  // Вопрос
-        page.addAttribute("ans", answers);  // Ответы
+        VBox questionBox = new VBox(10);
+        Label questionLabel = new Label(question.getQuestion());
+        ListView<String> answerList = new ListView<>();
+        answerList.getItems().addAll(answers);
+        Button checkButton = new Button("Check Answer");
 
-        return "question_start";  // Возвращаем страницу с вопросом
+        checkButton.setOnAction(e -> checkAnswer(answerList.getSelectionModel().getSelectedItem(), stage));
+
+        questionBox.getChildren().addAll(questionLabel, answerList, checkButton);
+        Scene questionScene = new Scene(questionBox, 400, 300);
+        stage.setScene(questionScene);
     }
 
-    @GetMapping("/question_start/physics")
-    public String physics(Model page) {
-        Physics question = physicsDatabase.getRandomQuestion();  // Получаем случайный вопрос
+    private void showPhysicsQuestion(Stage stage) {
+        Physics question = physicsDatabase.getRandomQuestion();
         List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
         explanation = question.getExplanation();
         model = "physics";
 
-        page.addAttribute("que", question.getQuestion());  // Вопрос
-        page.addAttribute("ans", answers);  // Ответы
+        VBox questionBox = new VBox(10);
+        Label questionLabel = new Label(question.getQuestion());
+        ListView<String> answerList = new ListView<>();
+        answerList.getItems().addAll(answers);
+        Button checkButton = new Button("Check Answer");
 
-        return "question_start";
+        checkButton.setOnAction(e -> checkAnswer(answerList.getSelectionModel().getSelectedItem(), stage));
+
+        questionBox.getChildren().addAll(questionLabel, answerList, checkButton);
+        Scene questionScene = new Scene(questionBox, 400, 300);
+        stage.setScene(questionScene);
     }
 
-    @PostMapping("/check_answer")
-    @ResponseBody
-    public String checkAnswer(@RequestParam("selectedAnswer") String selectedAnswer, Model page) {
+    private void checkAnswer(String selectedAnswer, Stage stage) {
         if (selectedAnswer.equals(rightAnswer)) {
-            return "right_answer";  // Клиент проверяет эту метку и выполняет редирект вручную
+            showRightAnswerPage(stage);
         } else {
-            page.addAttribute("error", "Неправильный ответ, попробуйте еще раз.");
-            return "question_start :: error";  // Возвращаем HTML для обновления части страницы
+            showErrorPage(stage);
         }
     }
 
-    @GetMapping("/right_answer")
-    public String rightAnswer(Model page) {
-        page.addAttribute("ans", rightAnswer);
-        page.addAttribute("explanation", explanation);
-        page.addAttribute("model", model);
-        return "right_answer";
+    private void showRightAnswerPage(Stage stage) {
+        VBox rightAnswerBox = new VBox(10);
+        rightAnswerBox.getChildren().addAll(
+                new Label("Correct Answer: " + rightAnswer),
+                new Label("Explanation: " + explanation)
+        );
+        Scene rightAnswerScene = new Scene(rightAnswerBox, 400, 300);
+        stage.setScene(rightAnswerScene);
     }
 
-    @GetMapping("/question_start/register")
-    public String register(Model model) {
+    private void showErrorPage(Stage stage) {
+        VBox errorBox = new VBox(10);
+        Label errorLabel = new Label("Wrong answer, try again.");
+        Button retryButton = new Button("Retry");
+        retryButton.setOnAction(e -> showAstronomyQuestion(stage));
+
+        errorBox.getChildren().addAll(errorLabel, retryButton);
+        Scene errorScene = new Scene(errorBox, 400, 300);
+        stage.setScene(errorScene);
+    }
+
+    private void showRegisterPage(Stage stage) {
+        VBox registerBox = new VBox(10);
         Register register = new Register();
 
-        model.addAttribute("items", register.addToRegister());
-        return "register";
+        ListView<List<RegisterItem>> itemsList = new ListView<>();
+        itemsList.getItems().addAll(register.addToRegister());
+
+        Button nextButton = new Button("Next");
+        nextButton.setOnAction(e -> showAstronomyQuestion(stage));
+
+        registerBox.getChildren().addAll(new Label("Register Items:"), itemsList, nextButton);
+        Scene registerScene = new Scene(registerBox, 400, 300);
+        stage.setScene(registerScene);
     }
-
-
-
-//    @GetMapping("/question_start/chess")
-//    public String chess(Model page) {
-//        Сhess question = chessDatabase.getRandomQuestion();  // Получаем случайный вопрос
-//        List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
-//
-//        page.addAttribute("que", question.getQuestion());  // Вопрос
-//        page.addAttribute("ans", answers);  // Ответы
-//
-//        return "question_start";  // Возвращаем страницу с вопросом
-//    }
-}
+    }
