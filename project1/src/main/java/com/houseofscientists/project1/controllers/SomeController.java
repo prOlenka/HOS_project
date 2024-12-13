@@ -18,6 +18,7 @@ public class SomeController {
     private final GeographyDatabase geographyDatabase;
     private final MathDatabase mathDatabase;
     private final PhysicsDatabase physicsDatabase;
+    private final Chess chess = new Chess();
 
     public SomeController(
             AstronomyDatabase astronomyDatabase,
@@ -43,13 +44,13 @@ public class SomeController {
 
     @GetMapping("/question_start/astronomy")
     public String astronomy(Model page) {
-        Astronomy question = astronomyDatabase.getRandomQuestion();  // Получаем случайный вопрос
-        List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
+        Astronomy question = astronomyDatabase.getRandomQuestion();
+        List<String> answers = List.of(question.getS(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
         explanation = question.getExplanation();
         model = "astronomy";
 
-        page.addAttribute("que", question.getQuestion());  // Вопрос
+        page.addAttribute("que", question.getQuestion());
         page.addAttribute("ans", answers);  // Ответы
 
         return "question_start";
@@ -58,7 +59,7 @@ public class SomeController {
     @GetMapping("/question_start/biology")
     public String biology(Model page) {
         Biology question = biologyDatabase.getRandomQuestion();  // Получаем случайный вопрос
-        List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
+        List<String> answers = List.of(question.getS(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
         explanation = question.getExplanation();
         model = "biology";
@@ -72,7 +73,7 @@ public class SomeController {
     @GetMapping("/question_start/geography")
     public String geography(Model page) {
         Geography question = geographyDatabase.getRandomQuestion();  // Получаем случайный вопрос
-        List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
+        List<String> answers = List.of(question.getS(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
         explanation = question.getExplanation();
         model = "geography";
@@ -86,7 +87,7 @@ public class SomeController {
     @GetMapping("/question_start/mathematics")
     public String mathematics(Model page) {
         Math question = mathDatabase.getRandomQuestion();  // Получаем случайный вопрос
-        List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
+        List<String> answers = List.of(question.getS(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
         model = "mathematics";
 
@@ -99,7 +100,7 @@ public class SomeController {
     @GetMapping("/question_start/physics")
     public String physics(Model page) {
         Physics question = physicsDatabase.getRandomQuestion();  // Получаем случайный вопрос
-        List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
+        List<String> answers = List.of(question.getS(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
         explanation = question.getExplanation();
         model = "physics";
@@ -136,17 +137,4 @@ public class SomeController {
         model.addAttribute("items", register.addToRegister());
         return "register";
     }
-
-
-
-//    @GetMapping("/question_start/chess")
-//    public String chess(Model page) {
-//        Сhess question = chessDatabase.getRandomQuestion();  // Получаем случайный вопрос
-//        List<String> answers = List.of(question.getRightAnswer(), question.getS1(), question.getS2(), question.getS3());
-//
-//        page.addAttribute("que", question.getQuestion());  // Вопрос
-//        page.addAttribute("ans", answers);  // Ответы
-//
-//        return "question_start";  // Возвращаем страницу с вопросом
-//    }
 }

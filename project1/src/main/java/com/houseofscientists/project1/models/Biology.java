@@ -19,16 +19,18 @@ public class Biology {
     private String question;
     private String explanation;
     private String rightAnswer;
+    private String s;
     private String s1;
     private String s2;
     private String s3;
 
 
-    public Biology(Integer id, String question, String explanation, String rightAnswer, String s1, String s2, String s3) {
+    public Biology(Integer id, String question, String explanation, String rightAnswer, String s, String s1, String s2, String s3) {
         this.id = id;
         this.question = question;
         this.explanation = explanation;
         this.rightAnswer = rightAnswer;
+        this.s = s;
         this.s1 = s1;
         this.s2 = s2;
         this.s3 = s3;

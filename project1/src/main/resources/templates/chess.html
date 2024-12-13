@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Шахматная игра</title>
+    <style>
+        .chess-board {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            width: 400px;
+            height: 400px;
+            border: 2px solid black;
+        }
+        .chess-board div {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .white {
+            background-color: #f0d9b5;
+        }
+        .black {
+            background-color: #b58863;
+        }
+        .piece {
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Шахматная игра</h1>
+<div id="chess-board" class="chess-board">
+    <!-- Доска будет сгенерирована динамически -->
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const board = document.getElementById("chess-board");
+
+        // Сгенерированная доска
+        const initialBoard = [
+            ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
+            ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+            ["", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", ""],
+            ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+            ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"]
+        ];
+
+        function renderBoard(boardState) {
+            board.innerHTML = "";
+            boardState.forEach((row, rowIndex) => {
+                row.forEach((cell, colIndex) => {
+                    const cellDiv = document.createElement("div");
+                    const isWhite = (rowIndex + colIndex) % 2 === 0;
+                    cellDiv.className = isWhite ? "white" : "black";
+
+                    if (cell) {
+                        const piece = document.createElement("span");
+                        piece.className = "piece";
+                        piece.innerText = cell;
+                        piece.draggable = true;
+
+                        piece.addEventListener("dragstart", (e) => {
+                            e.dataTransfer.setData("text/plain", `${rowIndex},${colIndex}`);
+                        });
+
+                        cellDiv.appendChild(piece);
+                    }
+
+                    cellDiv.addEventListener("dragover", (e) => e.preventDefault());
+                    cellDiv.addEventListener("drop", (e) => {
+                        const [fromRow, fromCol] = e.dataTransfer
+                            .getData("text/plain")
+                            .split(",")
+                            .map(Number);
+
+                        const toRow = rowIndex;
+                        const toCol = colIndex;
+
+                        // Отправить данные на сервер для проверки хода
+                        fetch("/question_start/chess/move", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({ fromRow, fromCol, toRow, toCol })
+                        })
+                            .then((response) => response.json())
+                            .then((updatedBoard) => {
+                                if (updatedBoard.valid) {
+                                    renderBoard(updatedBoard.board);
+                                } else {
+                                    alert("Неверный ход!");
+                                }
+                            });
+                    });
+
+                    board.appendChild(cellDiv);
+                });
+            });
+        }
+
+        renderBoard(initialBoard);
+    });
+</script>
+</body>
+</html>

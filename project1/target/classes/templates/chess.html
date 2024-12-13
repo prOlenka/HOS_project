@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <style>
+        .chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 60px);
+            grid-template-rows: repeat(8, 60px);
+            width: 480px;
+            height: 480px;
+        }
+        .white {
+            background-color: #f0d9b5;
+        }
+        .black {
+            background-color: #b58863;
+        }
+        .piece {
+            display: block;
+            font-size: 40px;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="chessboard" id="chessboard">
+    <!-- HTML разметка шахматной доски будет вставлена здесь -->
+    <div th:utext="${boardHtml}"></div>
+</div>
+
+<script>
+    const pieces = document.querySelectorAll('.piece');
+    let selectedPiece = null;
+
+    pieces.forEach(piece => {
+        piece.addEventListener('click', () => {
+            if (selectedPiece) {
+                // Если уже выбрана фигура, переместите ее
+                selectedPiece.parentNode.innerHTML = '';
+                piece.parentNode.appendChild(selectedPiece);
+                selectedPiece = null;
+            } else {
+                // Выберите текущую фигуру
+                selectedPiece = piece;
+            }
+        });
+    });
+</script>
+</body>
+</html>

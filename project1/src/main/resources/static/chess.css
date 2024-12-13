@@ -1,0 +1,43 @@
+/* chess.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.chess-container {
+    text-align: center;
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px); /* Размер клетки 50x50 */
+    grid-template-rows: repeat(8, 50px);
+    border: 2px solid #333;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+}
+
+.cell.black {
+    background-color: #769656;
+}
+
+.cell.white {
+    background-color: #eeeed2;
+}
+
+.chess-piece {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
