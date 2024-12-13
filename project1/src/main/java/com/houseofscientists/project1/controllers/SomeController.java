@@ -5,13 +5,14 @@ import com.houseofscientists.project1.models.*;
 import com.houseofscientists.project1.models.Math;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-public class SomeController extends Application {
+@Component
+public class SomeController {
 
     private final AstronomyDatabase astronomyDatabase;
     private final BiologyDatabase biologyDatabase;
@@ -36,27 +37,6 @@ public class SomeController extends Application {
         this.mathDatabase = mathDatabase;
         this.physicsDatabase = physicsDatabase;
     }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-        // Инициализация окна
-        primaryStage.setTitle("Science Quiz");
-
-        // Создание начальной страницы
-        VBox root = new VBox(10);
-        Button startButton = new Button("Start");
-        startButton.setOnAction(e -> showAstronomyQuestion(primaryStage));
-
-        root.getChildren().add(startButton);
-        Scene scene = new Scene(root, 400, 300);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
 
     private void showAstronomyQuestion(Stage stage) {
         Astronomy question = astronomyDatabase.getRandomQuestion();
