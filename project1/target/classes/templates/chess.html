@@ -5,51 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess Game</title>
     <style>
-        .chessboard {
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .chess-board {
             display: grid;
             grid-template-columns: repeat(8, 60px);
             grid-template-rows: repeat(8, 60px);
             width: 480px;
             height: 480px;
+            margin: 20px auto;
+            border: 2px solid #000;
         }
-        .white {
-            background-color: #f0d9b5;
+        .chess-square {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
         }
-        .black {
-            background-color: #b58863;
+        .chess-square.white {
+            background-color: #f0f0f0;
         }
-        .piece {
-            display: block;
-            font-size: 40px;
-            text-align: center;
-            line-height: 60px;
-            cursor: pointer;
+        .chess-square.black {
+            background-color: #888;
+        }
+        .chess-square.selected {
+            border: 2px solid red;
         }
     </style>
 </head>
 <body>
-<div class="chessboard" id="chessboard">
-    <!-- HTML разметка шахматной доски будет вставлена здесь -->
-    <div th:utext="${boardHtml}"></div>
-</div>
+
+<h1>Chess Game</h1>
+<div class="chess-board" id="chessBoard"></div>
 
 <script>
-    const pieces = document.querySelectorAll('.piece');
-    let selectedPiece = null;
+    const board = [
+        ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
+        ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+        ['.', '.', '.', '.', '.', '.', '.', '.'],
+        ['.', '.', '.', '.', '.', '.', '.', '.'],
+        ['.', '.', '.', '.', '.', '.', '.', '.'],
+        ['.', '.', '.', '.', '.', '.', '.', '.'],
+        ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+        ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
+    ];
 
-    pieces.forEach(piece => {
-        piece.addEventListener('click', () => {
-            if (selectedPiece) {
-                // Если уже выбрана фигура, переместите ее
-                selectedPiece.parentNode.innerHTML = '';
-                piece.parentNode.appendChild(selectedPiece);
-                selectedPiece = null;
-            } else {
-                // Выберите текущую фигуру
-                selectedPiece = piece;
+    const chessBoard = document.getElementById('chessBoard');
+    let selectedSquare = null;
+
+    function createBoard() {
+        for (let row = 0; row < 8; row++) {
+            for (let col = 0; col < 8; col++) {
+                const square = document.createElement('div');
+                square.classList.add('chess-square');
+                square.classList.add((row + col) % 2 === 0 ? 'white' : 'black');
+                square.dataset.row = row;
+                square.dataset.col = col;
+
+                if (board[row][col] !== '.') {
+                    square.textContent = board[row][col];
+                }
+
+                square.addEventListener('click', handleSquareClick);
+                chessBoard.appendChild(square);
             }
-        });
-    });
+        }
+    }
+
+    function handleSquareClick(event) {
+        const square = event.target;
+        const row = square.dataset.row;
+        const col = square.dataset.col;
+
+        if (selectedSquare) {
+            selectedSquare.classList.remove('selected');
+            // Logic to make the move could be added here
+            // For now, just update the board array and re-render it
+            board[row][col] = board[selectedSquare.dataset.row][selectedSquare.dataset.col];
+            board[selectedSquare.dataset.row][selectedSquare.dataset.col] = '.';
+
+            selectedSquare.textContent = '';
+            square.textContent = board[row][col];
+
+            selectedSquare = null;
+        } else {
+            selectedSquare = square;
+            selectedSquare.classList.add('selected');
+        }
+    }
+
+    createBoard();
 </script>
+
 </body>
 </html>

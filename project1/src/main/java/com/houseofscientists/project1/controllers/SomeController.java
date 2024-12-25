@@ -18,7 +18,6 @@ public class SomeController {
     private final GeographyDatabase geographyDatabase;
     private final MathDatabase mathDatabase;
     private final PhysicsDatabase physicsDatabase;
-    private final Chess chess = new Chess();
 
     public SomeController(
             AstronomyDatabase astronomyDatabase,
@@ -89,6 +88,7 @@ public class SomeController {
         Math question = mathDatabase.getRandomQuestion();  // Получаем случайный вопрос
         List<String> answers = List.of(question.getS(), question.getS1(), question.getS2(), question.getS3());
         rightAnswer = question.getRightAnswer();
+        explanation = question.getExplanation();
         model = "mathematics";
 
         page.addAttribute("que", question.getQuestion());  // Вопрос

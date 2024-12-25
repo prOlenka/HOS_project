@@ -9,8 +9,8 @@
   <script>
     function checkAnswer(selectedAnswer) {
       $.post('/check_answer', { selectedAnswer: selectedAnswer }, function(response) {
-        if (response.trim() === 'right_answer') {  // Проверка на точное совпадение
-          window.location.href = '/right_answer';  // Выполняем редирект
+        if (response.trim() === 'right_answer') {
+          window.location.href = '/right_answer';
         } else {
           showError('Неправильный ответ, попробуйте еще раз.');
           $('#question-container').html($(response).find('#question-container').html());
@@ -79,7 +79,6 @@
   </div>
 </main>
 
-<!-- Кнопка возврата -->
 <a href="/" class="back-button">Вернуться на главный экран</a>
 
 </body>
