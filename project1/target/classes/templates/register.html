@@ -18,7 +18,7 @@
 
         .slider-container {
             position: relative;
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: auto;
             overflow: hidden;
@@ -26,22 +26,16 @@
             background-color: #fff;
         }
 
-        .slide {
-            display: none;
-        }
+        /*.slide {*/
+        /*    display: none;*/
+        /*}*/
 
         .slide img {
-            width: 100%;
+            display: block;
+            width: calc(100% - 20px); /* Полная ширина минус отступы */
             height: auto;
+            margin: 10px; /* Отступы вокруг изображения */
             border-radius: 15px;
-        }
-
-        .caption {
-            margin-top: 15px;
-            font-size: 1.4rem;
-            color: #333;
-            font-weight: bold;
-            text-align: center;
         }
 
         .active {
@@ -62,6 +56,14 @@
 
         .right-control {
             right: 0;
+        }
+
+        .caption {
+            margin-top: 15px;
+            font-size: 1.4rem;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
         }
 
         .back-button {
@@ -86,29 +88,14 @@
     </style>
 </head>
 <body>
-
+<div class="slider-container">
     <div th:each="item : ${items}" class="slide">
         <img th:src="${item.imageUrl}" alt="Image">
         <div class="caption" th:text="${item.description}"></div>
     </div>
-
-<!--<div class="slider-container">-->
-<!--    <h1 style="background-image: url('../images/register/0_MAL5924.jpg');"></h1>-->
-<!--    <h1 style="background-image: url('../images/register/0_MAL5951.jpg');"></h1>-->
-<!--    <h1 style="background-image: url('../images/register/0_MAL5962.jpg');"></h1>-->
-<!--    <h1 style="background-image: url('../images/register/0_MAL5972.jpg');"></h1>-->
-
-<!--    <div class="slider-control left-control" onclick="changeSlide(-1)"></div>-->
-<!--    <div class="slider-control right-control" onclick="changeSlide(1)"></div>-->
-<!--</div>-->
-
-
-<!--<a-->
-
-<!--&gt;<img-->
-<!--        src="/images/register/0_MAL5924.jpg"-->
-<!--/></a>-->
-
+    <div class="slider-control left-control" onclick="changeSlide(-1)"></div>
+    <div class="slider-control right-control" onclick="changeSlide(1)"></div>
+</div>
 
 <!-- Кнопка возврата -->
 <a href="/" class="back-button">Вернуться на главный экран</a>
@@ -135,8 +122,18 @@
         showSlide(currentSlide + direction);
     }
 
+    // Переключение слайдов при клике на левую или правую половину
+    document.querySelector('.slider-container').addEventListener('click', (e) => {
+        const containerWidth = e.target.offsetWidth;
+        const clickPosition = e.offsetX;
+        if (clickPosition < containerWidth / 2) {
+            changeSlide(-1); // Левая половина - назад
+        } else {
+            changeSlide(1); // Правая половина - вперед
+        }
+    });
+
     showSlide(currentSlide);
 </script>
-
 </body>
 </html>
