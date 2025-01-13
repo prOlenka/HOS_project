@@ -35,11 +35,29 @@
         .chess-square.selected {
             border: 2px solid red;
         }
+        .back-button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
 
 <h1>Chess Game</h1>
+
+<!-- Кнопка возврата -->
+<a href="/" class="back-button">Вернуться на главный экран</a>
+
 <div class="chess-board" id="chessBoard"></div>
 
 <script>
